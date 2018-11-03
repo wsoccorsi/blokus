@@ -23,7 +23,7 @@ public:
     int getZ() const;
     void setZ(int z);
 
-private:
+protected:
     int x;
     int y;
     int z;

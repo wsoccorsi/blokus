@@ -3,14 +3,14 @@
 
 
 #include "MainWindow.h"
-#include "Board.h"
+#include "TileGrid.h"
 
 class Blokus: public MainWindow {
 public:
     explicit Blokus(int width=400, int height=500);
 
 private:
-    Board* board;
+    TileGrid* board;
 };
 
 
