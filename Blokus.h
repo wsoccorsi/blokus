@@ -5,7 +5,7 @@
 #include "MainWindow.h"
 #include "Board.h"
 
-class Blokus: MainWindow {
+class Blokus: public MainWindow {
 public:
     explicit Blokus(int width=400, int height=500);
 

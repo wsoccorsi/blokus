@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MainWindow.h"
+#include "Blokus.h"
 #include <string>
 #include <GLUT/glut.h>
 
@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
 
     glutInit(&argc, argv);
 
-    MainWindow* mainWindow = new MainWindow("test window");
+    Blokus* blokus = new Blokus();
 
     glutMainLoop();
 }
