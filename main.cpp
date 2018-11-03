@@ -1,9 +1,13 @@
 #include <iostream>
-#include "graphics.h"
+#include "MainWindow.h"
+#include <string>
+#include <GLUT/glut.h>
 
 int main(int argc, char** argv) {
 
-    graphicsPlay(argc, argv);
+    glutInit(&argc, argv);
 
+    MainWindow* mainWindow = new MainWindow("test window");
 
+    glutMainLoop();
 }
