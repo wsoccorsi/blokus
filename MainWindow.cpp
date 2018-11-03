@@ -11,7 +11,7 @@ std::string MainWindow::title = "";
 int MainWindow::width = 0;
 int MainWindow::height = 0;
 
-std::vector<std::vector<Drawable>> MainWindow::drawables = std::vector<std::vector<Drawable>>();
+std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
 
 
 MainWindow::MainWindow(std::string title, int width, int height) {
@@ -31,12 +31,12 @@ MainWindow::MainWindow(std::string title, int width, int height) {
     glutReshapeFunc(onResize);
 }
 
-void MainWindow::addDrawable(Drawable& drawable) {
-    while (drawables.size() < drawable.getZ() + 1) {
-        drawables.emplace_back(std::vector<Drawable>());
+void MainWindow::addDrawable(Drawable* drawable) {
+    while (drawables.size() < drawable->getZ() + 1) {
+        drawables.emplace_back(std::vector<Drawable*>());
     }
 
-    drawables[drawable.getZ()].push_back(drawable);
+    drawables[drawable->getZ()].push_back(drawable);
 }
 
 void MainWindow::onResize(int width, int height) {
@@ -51,9 +51,9 @@ void MainWindow::render() {
     glLoadIdentity();
     glOrtho(0, width-1, height-1, 0, -1, 1);
 
-    for (std::vector<Drawable>& drawablesForZ : drawables) {
-        for (Drawable& drawable : drawablesForZ) {
-            drawable.draw();
+    for (std::vector<Drawable*> drawablesForZ : drawables) {
+        for (Drawable* drawable : drawablesForZ) {
+            drawable->draw();
         }
     }
 
