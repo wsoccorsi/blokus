@@ -16,7 +16,7 @@ private:
     int y_tiles;
     std::vector<std::vector<Piece>> board;
 
-    void draw() override;
+    void draw(int width, int height) override;
 };
 
 

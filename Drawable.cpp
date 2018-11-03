@@ -10,7 +10,7 @@ Drawable::Drawable(int x, int y, int z) {
     this->z = z;
 }
 
-void Drawable::draw() {
+void Drawable::draw(int width, int height) {
 
 }
 

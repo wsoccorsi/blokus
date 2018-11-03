@@ -9,8 +9,8 @@ Board::Board(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
     this->y_tiles = y_tiles;
 }
 
-void Board::draw() {
-    Drawable::draw();
+void Board::draw(int width, int height) {
+    Drawable::draw(width, height);
 
     glBegin(GL_QUADS);
     glColor3ub(255,255,255);

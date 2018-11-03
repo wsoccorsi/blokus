@@ -12,7 +12,7 @@ class Drawable {
 public:
     Drawable();
     Drawable(int x, int y, int z);
-    virtual void draw();
+    virtual void draw(int width, int height);
 
     int getX() const;
     void setX(int x);

@@ -53,11 +53,9 @@ void MainWindow::render() {
 
     for (std::vector<Drawable*> drawablesForZ : drawables) {
         for (Drawable* drawable : drawablesForZ) {
-            drawable->draw();
+            drawable->draw(width, height);
         }
     }
 
     glFlush();
-
-    std::cout << "render" << std::endl;
 }
