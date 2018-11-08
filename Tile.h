@@ -11,7 +11,7 @@ public:
 
     void setColor(GLfloat red, GLfloat green, GLfloat blue);
 
-    const static int TILE_SIZE = 30;
+    const static int TILE_SIZE = 20;
 
 protected:
     GLfloat red;

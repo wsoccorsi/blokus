@@ -1,5 +1,5 @@
-#ifndef BLOKUS_BOARD_H
-#define BLOKUS_BOARD_H
+#ifndef BLOKUS_TILE_GRID_H
+#define BLOKUS_TILE_GRID_H
 
 #include <vector>
 #include "Tile.h"
@@ -10,6 +10,7 @@ class TileGrid: public Drawable {
 public:
     TileGrid();
     TileGrid(int x, int y, int x_tiles, int y_tiles);
+
     void draw(int width, int height) override;
 
 protected:
@@ -20,4 +21,4 @@ protected:
 };
 
 
-#endif //BLOKUS_BOARD_H
+#endif //BLOKUS_TILE_GRID_H

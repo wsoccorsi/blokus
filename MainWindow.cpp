@@ -12,6 +12,7 @@ int MainWindow::width = 0;
 int MainWindow::height = 0;
 
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
+std::vector<Clickable*> MainWindow::clickables = std::vector<Clickable*>();
 
 
 MainWindow::MainWindow(std::string title, int width, int height) {
@@ -27,8 +28,9 @@ MainWindow::MainWindow(std::string title, int width, int height) {
     glDisable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
 
-    glutDisplayFunc(render);
     glutReshapeFunc(onResize);
+    glutMouseFunc(onClick);
+    glutDisplayFunc(render);
 }
 
 void MainWindow::addDrawable(Drawable* drawable) {
@@ -39,11 +41,22 @@ void MainWindow::addDrawable(Drawable* drawable) {
     drawables[drawable->getZ()].push_back(drawable);
 }
 
+void MainWindow::addClickable(Clickable* clickable) {
+    clickables.push_back(clickable);
+}
+
 void MainWindow::onResize(int width, int height) {
     MainWindow::width = width;
     MainWindow::height = height;
     std::cout << width << ", " << height << std::endl;
 }
+
+void MainWindow::onClick(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+
+    }
+}
+
 
 void MainWindow::render() {
     glViewport(0, 0, width, height);
