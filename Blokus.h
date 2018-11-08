@@ -6,7 +6,7 @@
 
 class Blokus: public MainWindow {
 public:
-    explicit Blokus(int width=400, int height=500);
+    explicit Blokus(int width=900, int height=700);
 
 protected:
     TileGrid* board;

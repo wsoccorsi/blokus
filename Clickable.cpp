@@ -8,6 +8,6 @@ void Clickable::onClick(int x, int y) {
 
 }
 
-void Clickable::isInBounds(int x, int y) {
-
+bool Clickable::isInBounds(int x, int y) {
+    return false;
 }

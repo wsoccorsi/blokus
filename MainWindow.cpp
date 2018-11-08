@@ -20,13 +20,15 @@ MainWindow::MainWindow(std::string title, int width, int height) {
     MainWindow::width = width;
     MainWindow::height = height;
 
-    glutInitDisplayMode(GLUT_RGBA);
+    glutInitDisplayMode(GLUT_RGBA | GLUT_SINGLE);
     glutInitWindowSize(width, height);
     glutCreateWindow("Main Window");
 
-    glClearColor(0, 0, 0, 0); // moved this line to be in the init function
-    glDisable(GL_DEPTH_TEST);
+    glClearColor(0, 0, 0, 0);
+    //glDisable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
+
+    glViewport(0, 0, width, height);
 
     glutReshapeFunc(onResize);
     glutMouseFunc(onClick);
@@ -48,19 +50,23 @@ void MainWindow::addClickable(Clickable* clickable) {
 void MainWindow::onResize(int width, int height) {
     MainWindow::width = width;
     MainWindow::height = height;
+    glutPostRedisplay();
     std::cout << width << ", " << height << std::endl;
 }
 
 void MainWindow::onClick(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-
+        for (Clickable* clickable : clickables) {
+            if (clickable->isInBounds(x, y)) {
+                clickable->onClick(x, y);
+            }
+        }
     }
 }
 
-
 void MainWindow::render() {
-    glViewport(0, 0, width, height);
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
+    //glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, width-1, height-1, 0, -1, 1);
 
@@ -69,6 +75,7 @@ void MainWindow::render() {
             drawable->draw(width, height);
         }
     }
+    std::cout << "render" << std::endl;
 
-    glFlush();
+    glutSwapBuffers();
 }

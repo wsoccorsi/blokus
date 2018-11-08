@@ -7,7 +7,7 @@ public:
     Clickable();
 
     virtual void onClick(int x, int y);
-    virtual void isInBounds(int x, int y);
+    virtual bool isInBounds(int x, int y);
 };
 
 
