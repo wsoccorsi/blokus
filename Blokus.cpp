@@ -15,4 +15,5 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     form.push_back(Coordinate(2, 1));
     Piece* piece = new Piece(form, 10, 10);
     addDrawable(piece);
+    addClickable(piece);
 }

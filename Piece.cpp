@@ -1,10 +1,11 @@
+#include <iostream>
 #include "Piece.h"
 
 Piece::Piece() {
 
 }
 
-Piece::Piece(std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1) {
+Piece::Piece(std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1), Clickable() {
     this->form = form;
     this->x = x;
     this->y = y;
@@ -39,4 +40,18 @@ void Piece::flip() {
 
 void Piece::moveTo(Coordinate coord) {
 
+}
+
+void Piece::onClick(Coordinate coord) {
+    Clickable::onClick(coord);
+    std::cout << "piece clicked" << std::endl;
+}
+
+bool Piece::isInBounds(Coordinate coord) {
+    for (Tile* tile : tiles) {
+        if (tile->isInBounds(coord)) {
+            return true;
+        }
+    }
+    return false;
 }

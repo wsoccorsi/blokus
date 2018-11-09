@@ -7,6 +7,8 @@
 #include <GL/glut.h>
 #endif
 
+#include "Coordinate.h"
+
 std::string MainWindow::title = "";
 int MainWindow::width = 0;
 int MainWindow::height = 0;
@@ -55,10 +57,11 @@ void MainWindow::onResize(int width, int height) {
 }
 
 void MainWindow::onClick(int button, int state, int x, int y) {
+    Coordinate coord = Coordinate(x, y);
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
         for (Clickable* clickable : clickables) {
-            if (clickable->isInBounds(x, y)) {
-                clickable->onClick(x, y);
+            if (clickable->isInBounds(coord)) {
+                clickable->onClick(coord);
             }
         }
     }

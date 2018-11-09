@@ -4,10 +4,10 @@ Clickable::Clickable() {
 
 }
 
-void Clickable::onClick(int x, int y) {
+void Clickable::onClick(Coordinate coord) {
 
 }
 
-bool Clickable::isInBounds(int x, int y) {
+bool Clickable::isInBounds(Coordinate coord) {
     return false;
 }

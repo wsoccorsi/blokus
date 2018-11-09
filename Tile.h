@@ -4,9 +4,10 @@
 #include "Drawable.h"
 #include <vector>
 #include "Coordinate.h"
+#include "Clickable.h"
 
 
-class Tile: public Drawable {
+class Tile: public Drawable, public Clickable {
 public:
     Tile(int x, int y);
     void draw(int width, int height) override;
@@ -14,6 +15,9 @@ public:
     void setColor(GLfloat red, GLfloat green, GLfloat blue);
 
     const static int TILE_SIZE = 20;
+
+    void onClick(Coordinate coord) override;
+    bool isInBounds(Coordinate coord) override;
 
 protected:
     GLfloat red;

@@ -5,9 +5,10 @@
 #include "Coordinate.h"
 #include "Drawable.h"
 #include "Tile.h"
+#include "Clickable.h"
 
 
-class Piece: public Drawable {
+class Piece: public Drawable, public Clickable {
 public:
     Piece();
     Piece(std::vector<Coordinate> form, int x, int y);
@@ -18,6 +19,9 @@ public:
     void rotateRight();
     void flip();
     void moveTo(Coordinate coord);
+
+    void onClick(Coordinate coord) override;
+    bool isInBounds(Coordinate coord) override;
 
 private:
     int x;
