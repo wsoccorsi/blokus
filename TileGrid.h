@@ -5,6 +5,7 @@
 #include "Tile.h"
 #include "Drawable.h"
 #include "Piece.h"
+#include "Coordinate.h"
 
 
 class TileGrid: public Drawable {
@@ -14,8 +15,10 @@ public:
 
     void draw(int width, int height) override;
 
-    bool pieceFits(Piece* piece);
-    void placePiece(Piece* piece);
+    Coordinate screenPosToCoord(Coordinate coord);
+
+    bool pieceFits(Piece* piece, Coordinate coord);
+    void placePiece(Piece* piece, Coordinate coord);
 
 protected:
     int x_tiles;

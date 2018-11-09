@@ -2,6 +2,8 @@
 #define BLOKUS_TILE_H
 
 #include "Drawable.h"
+#include <vector>
+#include "Coordinate.h"
 
 
 class Tile: public Drawable {

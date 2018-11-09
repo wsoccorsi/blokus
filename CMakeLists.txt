@@ -15,6 +15,6 @@ file(GLOB SOURCE_FILES
         *.h
         )
 
-add_executable(main.cpp ${SOURCE_FILES} Blokus.cpp Blokus.h MainWindow.cpp MainWindow.h TileGrid.cpp TileGrid.h Drawable.cpp Drawable.h Tile.cpp Tile.h Board.cpp Board.h Tray.cpp Tray.h Piece.cpp Piece.h Clickable.cpp Clickable.h Player.cpp Player.h)
+add_executable(main.cpp ${SOURCE_FILES} Blokus.cpp Blokus.h MainWindow.cpp MainWindow.h TileGrid.cpp TileGrid.h Drawable.cpp Drawable.h Tile.cpp Tile.h Board.cpp Board.h Tray.cpp Tray.h Piece.cpp Piece.h Clickable.cpp Clickable.h Player.cpp Player.h Coordinate.cpp Coordinate.h)
 
 target_link_libraries (main.cpp ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m dl pthread)

@@ -28,3 +28,18 @@ void TileGrid::draw(int width, int height) {
     }
 }
 
+Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
+    if (coord.getX() > x + x_tiles * Tile::TILE_SIZE || coord.getX() < x ||
+        coord.getY() > y + y_tiles * Tile::TILE_SIZE || coord.getY() < y) {
+        return Coordinate(-1, -1);
+    }
+    return Coordinate((coord.getX() - x) / Tile::TILE_SIZE, (coord.getY() - y) / Tile::TILE_SIZE);
+}
+
+bool TileGrid::pieceFits(Piece* piece, Coordinate coord) {
+    return false;
+}
+
+void TileGrid::placePiece(Piece* piece, Coordinate coord) {
+
+}
