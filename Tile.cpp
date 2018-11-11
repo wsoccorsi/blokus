@@ -23,9 +23,14 @@ void Tile::draw(int width, int height) {
 
 void Tile::onClick(Coordinate coord) {
     Clickable::onClick(coord);
+    this->clickCallback(coord);
 }
 
 bool Tile::isInBounds(Coordinate coord) {
     return coord.getX() >= x && coord.getX() <= x + TILE_SIZE &&
            coord.getY() >= y && coord.getY() <= y + TILE_SIZE;
+}
+
+void Tile::setOnClick(std::function<void(Coordinate)> callback) {
+    this->clickCallback = callback;
 }

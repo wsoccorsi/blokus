@@ -1,11 +1,20 @@
-#ifndef BLOKUS_TILE_GRID_H
+#ifndef BLOKUS_BOARD_H
 #define BLOKUS_BOARD_H
 
 #include "TileGrid.h"
+#include "Clickable.h"
+
+#include "MainWindow.h"
+
+class Blokus;
 
 class Board: public TileGrid {
 public:
-    Board(int x, int y);
+    Board();
+    Board(Blokus* blokus, int x, int y);
+
+protected:
+    Blokus* blokus;
 };
 
 

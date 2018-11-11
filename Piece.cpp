@@ -1,11 +1,13 @@
 #include <iostream>
 #include "Piece.h"
+#include "Blokus.h"
 
 Piece::Piece() {
 
 }
 
-Piece::Piece(std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1), Clickable() {
+Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1), Clickable() {
+    this->blokus = blokus;
     this->form = form;
     this->x = x;
     this->y = y;
@@ -17,6 +19,8 @@ Piece::Piece(std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1), Cli
         tile->setColor(255, 0, 0);
         this->tiles.push_back(tile);
     }
+
+    this->hovering = false;
 }
 
 void Piece::draw(int width, int height) {
@@ -45,6 +49,10 @@ void Piece::moveTo(Coordinate coord) {
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
     std::cout << "piece clicked" << std::endl;
+
+    if (blokus->clickedPiece == nullptr) {
+        blokus->clickedPiece = this;
+    }
 }
 
 bool Piece::isInBounds(Coordinate coord) {

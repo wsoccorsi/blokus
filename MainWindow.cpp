@@ -34,6 +34,7 @@ MainWindow::MainWindow(std::string title, int width, int height) {
 
     glutReshapeFunc(onResize);
     glutMouseFunc(onClick);
+    glutPassiveMotionFunc(onMouseMove);
     glutDisplayFunc(render);
 }
 
@@ -65,6 +66,10 @@ void MainWindow::onClick(int button, int state, int x, int y) {
             }
         }
     }
+}
+
+void MainWindow::onMouseMove(int x, int y) {
+    //std::cout << x << ", " << y << std::endl;
 }
 
 void MainWindow::render() {

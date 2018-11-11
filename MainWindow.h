@@ -14,6 +14,10 @@ public:
     static void addDrawable(Drawable* drawable);
     static void addClickable(Clickable* clickable);
 
+    enum Event {
+        mouse_move
+    };
+
 protected:
     static std::string title;
     static int width;
@@ -25,6 +29,7 @@ protected:
     static void render();
     static void onResize(int width, int height);
     static void onClick(int button, int state, int x, int y);
+    static void onMouseMove(int x, int y);
 
 };
 

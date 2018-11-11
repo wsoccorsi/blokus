@@ -7,11 +7,12 @@
 #include "Tile.h"
 #include "Clickable.h"
 
+class Blokus;
 
 class Piece: public Drawable, public Clickable {
 public:
     Piece();
-    Piece(std::vector<Coordinate> form, int x, int y);
+    Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y);
 
     void draw(int width, int height) override;
 
@@ -24,10 +25,14 @@ public:
     bool isInBounds(Coordinate coord) override;
 
 private:
+    Blokus* blokus;
+    std::vector<Coordinate> form;
     int x;
     int y;
-    std::vector<Coordinate> form;
+
     std::vector<Tile*> tiles;
+
+    bool hovering;
 };
 
 

@@ -5,6 +5,7 @@
 #include <vector>
 #include "Coordinate.h"
 #include "Clickable.h"
+#include <functional>
 
 
 class Tile: public Drawable, public Clickable {
@@ -19,10 +20,14 @@ public:
     void onClick(Coordinate coord) override;
     bool isInBounds(Coordinate coord) override;
 
+    void setOnClick(std::function<void(Coordinate)> callback);
+
 protected:
     GLfloat red;
     GLfloat green;
     GLfloat blue;
+
+    std::function<void(Coordinate)> clickCallback;
 };
 
 
