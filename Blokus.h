@@ -4,8 +4,6 @@
 #include "MainWindow.h"
 #include "TileGrid.h"
 
-enum class Event;
-
 class Blokus: public MainWindow, public EventListener<Blokus> {
 public:
     enum Event {
