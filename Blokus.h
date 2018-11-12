@@ -3,14 +3,10 @@
 
 #include "MainWindow.h"
 #include "TileGrid.h"
+#include "EventListener.h"
 
-class Blokus: public MainWindow, public EventListener<Blokus> {
+class Blokus: public MainWindow {
 public:
-    enum Event {
-        MOUSE_MOVE,
-        MOUSE_CLICK
-    };
-
     explicit Blokus(int width=900, int height=700);
     Piece* clickedPiece;
 

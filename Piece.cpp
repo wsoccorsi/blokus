@@ -53,6 +53,13 @@ void Piece::onClick(Coordinate coord) {
 
     if (blokus->clickedPiece == nullptr) {
         blokus->clickedPiece = this;
+        blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
+            if (blokus->clickedPiece == nullptr) {
+                return EventListener::ReturnType::POP;
+            }
+            moveTo(Coordinate(blokus->getMouseX(), blokus->getMouseY()));
+            return EventListener::ReturnType::CONTINUE;
+        });
     }
 }
 
