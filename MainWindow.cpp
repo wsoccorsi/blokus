@@ -19,7 +19,7 @@ int MainWindow::mouseY = 0;
 EventListener MainWindow::eventListener = EventListener();
 
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
-std::vector<Clickable*> MainWindow::clickables = std::vector<Clickable*>();
+std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
 
 MainWindow::MainWindow(std::string title, int width, int height): EventListener() {
@@ -45,14 +45,17 @@ MainWindow::MainWindow(std::string title, int width, int height): EventListener(
 
 void MainWindow::addDrawable(Drawable* drawable) {
     while (drawables.size() < drawable->getZ() + 1) {
-        drawables.emplace_back(std::vector<Drawable*>());
+        drawables.push_back(std::vector<Drawable*>());
     }
 
     drawables[drawable->getZ()].push_back(drawable);
 }
 
 void MainWindow::addClickable(Clickable* clickable) {
-    clickables.push_back(clickable);
+    while (clickables.size() < clickable->getClickPriority() + 1) {
+        clickables.push_back(std::vector<Clickable*>());
+    }
+    clickables[clickable->getClickPriority()].push_back(clickable);
 }
 
 void MainWindow::update() {
@@ -69,11 +72,15 @@ void MainWindow::onResize(int width, int height) {
 void MainWindow::onClick(int button, int state, int x, int y) {
     Coordinate coord = Coordinate(x, y);
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-        for (Clickable* clickable : clickables) {
-            if (clickable->isInBounds(coord)) {
-                clickable->onClick(coord);
+        for (std::vector<Clickable*> clickablesForLevel : clickables) {
+            for (Clickable* clickable : clickablesForLevel) {
+                if (clickable->isInBounds(coord)) {
+                    clickable->onClick(coord);
+                    return;
+                }
             }
         }
+
     }
 }
 

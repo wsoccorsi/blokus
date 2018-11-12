@@ -38,7 +38,7 @@ protected:
     static EventListener eventListener;
 
     static std::vector<std::vector<Drawable*>> drawables; // z index : drawables
-    static std::vector<Clickable*> clickables;
+    static std::vector<std::vector<Clickable*>> clickables;
 
     static void render();
     static void onResize(int width, int height);

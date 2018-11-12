@@ -6,7 +6,7 @@ Piece::Piece() {
 
 }
 
-Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawable(x, y, 1), Clickable() {
+Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawable(x, y, 3), Clickable(1) {
     this->blokus = blokus;
     this->form = form;
     this->x = x;
@@ -64,6 +64,9 @@ void Piece::onClick(Coordinate coord) {
 }
 
 bool Piece::isInBounds(Coordinate coord) {
+    if (blokus->clickedPiece == this) {
+        return false;
+    }
     for (Tile* tile : tiles) {
         if (tile->isInBounds(coord)) {
             return true;

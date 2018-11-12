@@ -1,6 +1,6 @@
 #include "Tile.h"
 
-Tile::Tile(int x, int y): Drawable(x, y, 2), Clickable() {
+Tile::Tile(int x, int y): Drawable(x, y, 2), Clickable(2) {
     this->red = 0;
     this->green = 0;
     this->blue = 0;
