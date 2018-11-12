@@ -36,10 +36,22 @@ Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
     return Coordinate((coord.getX() - x) / Tile::TILE_SIZE, (coord.getY() - y) / Tile::TILE_SIZE);
 }
 
+Coordinate TileGrid::coordToScreenPos(Coordinate coord) {
+    return Coordinate(x + coord.getX() * Tile::TILE_SIZE, y + coord.getY() * Tile::TILE_SIZE);
+}
+
+Tile* TileGrid::screenPosToTile(Coordinate coord) {
+    Coordinate gridCoord = screenPosToCoord(coord);
+    if (gridCoord.getX() > -1) {
+        return tiles[gridCoord.getX()][gridCoord.getY()];
+    }
+    return nullptr;
+}
+
 bool TileGrid::pieceFits(Piece* piece, Coordinate coord) {
-    return false;
+    return true;
 }
 
 void TileGrid::placePiece(Piece* piece, Coordinate coord) {
-
+    piece->moveTo(coordToScreenPos(coord));
 }

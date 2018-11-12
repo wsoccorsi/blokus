@@ -50,6 +50,10 @@ void MainWindow::addClickable(Clickable* clickable) {
     clickables.push_back(clickable);
 }
 
+void MainWindow::update() {
+    glutPostRedisplay();
+}
+
 void MainWindow::onResize(int width, int height) {
     MainWindow::width = width;
     MainWindow::height = height;

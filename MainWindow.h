@@ -14,9 +14,7 @@ public:
     static void addDrawable(Drawable* drawable);
     static void addClickable(Clickable* clickable);
 
-    enum Event {
-        mouse_move
-    };
+    static void update();
 
 protected:
     static std::string title;

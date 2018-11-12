@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Board.h"
+#include "Blokus.h"
+
 
 Board::Board() {
     this->blokus = nullptr;
@@ -13,7 +15,13 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
             MainWindow* mainWindow = (MainWindow*) this->blokus;
             mainWindow->addClickable(tile);
             tile->setOnClick([&] (Coordinate coord) {
-                std::cout << coord.getX() << ", " << coord.getY() << std::endl;
+                if (this->blokus->clickedPiece != nullptr) {
+                    Coordinate pieceCoord = screenPosToCoord(coord);
+                    if (pieceFits(this->blokus->clickedPiece, pieceCoord)) {
+                        placePiece(this->blokus->clickedPiece, pieceCoord);
+                        this->blokus->clickedPiece = nullptr;
+                    }
+                }
             });
         }
     }

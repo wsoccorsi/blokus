@@ -32,7 +32,7 @@ private:
 
     std::vector<Tile*> tiles;
 
-    bool hovering;
+    void updateTiles();
 };
 
 

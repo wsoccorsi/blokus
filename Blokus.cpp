@@ -2,7 +2,9 @@
 #include "Tray.h"
 #include "Board.h"
 
-Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
+Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height), EventListener<Event>() {
+    this->clickedPiece = nullptr;
+
     board = new Board(this, 30, 30);
     addDrawable(board);
 

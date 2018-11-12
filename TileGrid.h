@@ -16,6 +16,8 @@ public:
     void draw(int width, int height) override;
 
     Coordinate screenPosToCoord(Coordinate coord);
+    Tile* screenPosToTile(Coordinate coord);
+    Coordinate coordToScreenPos(Coordinate coord);
 
     bool pieceFits(Piece* piece, Coordinate coord);
     void placePiece(Piece* piece, Coordinate coord);

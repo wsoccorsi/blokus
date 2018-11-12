@@ -4,10 +4,16 @@
 #include "MainWindow.h"
 #include "TileGrid.h"
 
-class Blokus: public MainWindow {
-public:
-    explicit Blokus(int width=900, int height=700);
+enum class Event;
 
+class Blokus: public MainWindow, public EventListener<Blokus> {
+public:
+    enum Event {
+        MOUSE_MOVE,
+        MOUSE_CLICK
+    };
+
+    explicit Blokus(int width=900, int height=700);
     Piece* clickedPiece;
 
 protected:

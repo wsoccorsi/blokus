@@ -19,8 +19,6 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawab
         tile->setColor(255, 0, 0);
         this->tiles.push_back(tile);
     }
-
-    this->hovering = false;
 }
 
 void Piece::draw(int width, int height) {
@@ -43,7 +41,10 @@ void Piece::flip() {
 }
 
 void Piece::moveTo(Coordinate coord) {
-
+    x = coord.getX();
+    y = coord.getY();
+    updateTiles();
+    blokus->update();
 }
 
 void Piece::onClick(Coordinate coord) {
@@ -62,4 +63,12 @@ bool Piece::isInBounds(Coordinate coord) {
         }
     }
     return false;
+}
+
+void Piece::updateTiles() {
+    for (int i = 0; i < form.size(); i++) {
+        Coordinate coord = form[i];
+        tiles[i]->setX(x + coord.getX() * Tile::TILE_SIZE);
+        tiles[i]->setY(y + coord.getY() * Tile::TILE_SIZE);
+    }
 }
