@@ -1,8 +1,9 @@
 #ifndef BLOKUS_EVENTLISTENER_H
 #define BLOKUS_EVENTLISTENER_H
 
-#import <vector>
-#import <unordered_map>
+#include <vector>
+#include <unordered_map>
+#include <functional>
 
 class EventListener {
 public:
