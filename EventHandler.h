@@ -14,11 +14,12 @@ public:
     EventHandler();
 
     virtual unsigned long on(int event, std::function<int()> callback);
-    virtual void pop(int event, int id);
+    virtual void pop(int event, unsigned long id);
     virtual void fire(int event);
 
 protected:
-    std::unordered_map<int, std::unordered_map<int, std::function<int()>>> callbacks;
+    std::unordered_map<int, std::unordered_map<unsigned long, std::function<int()>>> callbacks;
+    unsigned long nextId;
 };
 
 
