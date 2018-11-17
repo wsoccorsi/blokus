@@ -16,13 +16,13 @@ int MainWindow::height = 0;
 int MainWindow::mouseX = 0;
 int MainWindow::mouseY = 0;
 
-EventListener MainWindow::eventListener = EventListener();
+EventHandler MainWindow::eventHandler = EventHandler();
 
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
 std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
 
-MainWindow::MainWindow(std::string title, int width, int height): EventListener() {
+MainWindow::MainWindow(std::string title, int width, int height): EventHandler() {
     MainWindow::title = title;
     MainWindow::width = width;
     MainWindow::height = height;
@@ -87,7 +87,7 @@ void MainWindow::onClick(int button, int state, int x, int y) {
 void MainWindow::onMouseMove(int x, int y) {
     mouseX = x;
     mouseY = y;
-    eventListener.fire(Event::MOUSE_MOVE);
+    eventHandler.fire(Event::MOUSE_MOVE);
 }
 
 void MainWindow::render() {
@@ -106,8 +106,8 @@ void MainWindow::render() {
     glutSwapBuffers();
 }
 
-EventListener& MainWindow::getEventListener() {
-    return eventListener;
+EventHandler& MainWindow::getEventListener() {
+    return eventHandler;
 }
 
 int MainWindow::getMouseX() {

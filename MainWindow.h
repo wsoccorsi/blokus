@@ -6,9 +6,9 @@
 #include <unordered_map>
 #include "Drawable.h"
 #include "Clickable.h"
-#include "EventListener.h"
+#include "EventHandler.h"
 
-class MainWindow: public EventListener {
+class MainWindow: public EventHandler {
 public:
     enum Event {
         MOUSE_MOVE,
@@ -22,7 +22,7 @@ public:
 
     static void update();
 
-    static EventListener& getEventListener();
+    static EventHandler& getEventListener();
 
     static int getMouseX();
     static int getMouseY();
@@ -35,7 +35,7 @@ protected:
     static int mouseX;
     static int mouseY;
 
-    static EventListener eventListener;
+    static EventHandler eventHandler;
 
     static std::vector<std::vector<Drawable*>> drawables; // z index : drawables
     static std::vector<std::vector<Clickable*>> clickables;

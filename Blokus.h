@@ -3,7 +3,7 @@
 
 #include "MainWindow.h"
 #include "TileGrid.h"
-#include "EventListener.h"
+#include "EventHandler.h"
 
 class Blokus: public MainWindow {
 public:

@@ -2,7 +2,7 @@
 #include "Blokus.h"
 #include <string>
 #include <GLUT/glut.h>
-#include "EventListener.h"
+#include "EventHandler.h"
 
 int main(int argc, char** argv) {
 

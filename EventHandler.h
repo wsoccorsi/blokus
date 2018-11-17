@@ -1,17 +1,17 @@
-#ifndef BLOKUS_EVENTLISTENER_H
-#define BLOKUS_EVENTLISTENER_H
+#ifndef BLOKUS_EVENTHANDLER_H
+#define BLOKUS_EVENTHANDLER_H
 
 #import <vector>
 #import <unordered_map>
 
-class EventListener {
+class EventHandler {
 public:
     enum ReturnType {
         CONTINUE,
         POP
     };
 
-    EventListener();
+    EventHandler();
 
     virtual unsigned long on(int event, std::function<int()> callback);
     virtual void pop(int event, int id);
@@ -22,4 +22,4 @@ protected:
 };
 
 
-#endif //BLOKUS_EVENTLISTENER_H
+#endif //BLOKUS_EVENTHANDLER_H

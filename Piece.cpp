@@ -55,10 +55,10 @@ void Piece::onClick(Coordinate coord) {
         blokus->clickedPiece = this;
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {
-                return EventListener::ReturnType::POP;
+                return EventHandler::ReturnType::POP;
             }
             moveTo(Coordinate(blokus->getMouseX(), blokus->getMouseY()));
-            return EventListener::ReturnType::CONTINUE;
+            return EventHandler::ReturnType::CONTINUE;
         });
     }
 }
