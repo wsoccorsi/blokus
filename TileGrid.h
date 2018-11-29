@@ -22,9 +22,16 @@ public:
     bool pieceFits(Piece* piece, Coordinate coord);
     void placePiece(Piece* piece, Coordinate coord);
 
+
+
+
+
+
+
 protected:
     int x_tiles;
     int y_tiles;
+
 
     std::vector<std::vector<Tile*>> tiles;
 };

@@ -82,3 +82,11 @@ void Piece::updateTiles() {
         tiles[i]->setY(y + coord.getY() * Tile::TILE_SIZE);
     }
 }
+
+std::vector<Coordinate> Piece::getForm() const{
+    return form;
+}
+
+std::vector<Tile *> Piece::getTiles()  {
+    return tiles;
+}

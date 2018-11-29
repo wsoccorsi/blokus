@@ -22,7 +22,7 @@ std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vec
 std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
 
-MainWindow::MainWindow(std::string title, int width, int height): EventHandler() {
+MainWindow::MainWindow(std::string title, int width, int height) : EventHandler() {
     MainWindow::title = title;
     MainWindow::width = width;
     MainWindow::height = height;

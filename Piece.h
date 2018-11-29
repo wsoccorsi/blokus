@@ -14,6 +14,10 @@ public:
     Piece();
     Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y);
 
+    std::vector<Coordinate> getForm() const;
+
+    std::vector<Tile *> getTiles() ;
+
     void draw(int width, int height) override;
 
     void rotateLeft();

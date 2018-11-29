@@ -13,7 +13,7 @@ void Tile::setColor(GLfloat red, GLfloat green, GLfloat blue) {
 }
 
 void Tile::draw(int width, int height) {
-    Drawable::draw(width, height);
+    Drawable::draw(width, height); //WHY!!!
 
     glColor3f(red/2, green/2, blue/2);
     glRectf(x, y, x + TILE_SIZE, y + TILE_SIZE);
@@ -34,3 +34,4 @@ bool Tile::isInBounds(Coordinate coord) {
 void Tile::setOnClick(std::function<void(Coordinate)> callback) {
     this->clickCallback = callback;
 }
+
