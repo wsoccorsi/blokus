@@ -19,21 +19,20 @@ public:
     Tile* screenPosToTile(Coordinate coord);
     Coordinate coordToScreenPos(Coordinate coord);
 
-    bool pieceFits(Piece* piece, Coordinate coord);
+    virtual bool isValidMove(Piece* piece, Coordinate coord) = 0;
+
+    bool pieceIsWithinBounds(Piece* piece, Coordinate coord);
+    bool pieceOverlaps(Piece* piece, Coordinate coord);
+
     void placePiece(Piece* piece, Coordinate coord);
-
-
-
-
-
-
+    void removePiece(Piece* piece);
 
 protected:
     int x_tiles;
     int y_tiles;
 
-
     std::vector<std::vector<Tile*>> tiles;
+    std::vector<std::vector<Piece*>> pieceGrid;
 };
 
 

@@ -8,6 +8,11 @@ TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
 
     this->tiles = std::vector<std::vector<Tile*>>();
 
+    this->pieceGrid = std::vector<std::vector<Piece*>>();
+    for (int i = 0; i < x_tiles; i++) {
+        this->pieceGrid.push_back(std::vector<Piece*>(y_tiles));
+    }
+
     for (int x_tile = 0; x_tile < x_tiles; x_tile++) {
         std::vector<Tile*> column = std::vector<Tile*>();
         for (int y_tile = 0; y_tile < y_tiles; y_tile++) {
@@ -48,16 +53,13 @@ Tile* TileGrid::screenPosToTile(Coordinate coord) {
     return nullptr;
 }
 
-bool TileGrid::pieceFits(Piece* piece, Coordinate coord) {
+bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
     //First Find the Boundaries of the board
     std::vector<Coordinate> form = piece->getForm();
     bool inBounds = false;
 
     //iterating through form and checking boundaries
     for(int i = 0; i < form.size(); i++){
-        printf("x = %d ", piece->getTiles()[i]->getX());  printf("y = %d \n", piece->getTiles()[i]->getY());
-        printf("x = %d ", (getX() + Tile::TILE_SIZE * x_tiles));  printf("y = %d \n", getY() + Tile::TILE_SIZE * y_tiles);
-
         if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * x_tiles)
          || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * y_tiles)
          || piece->getTiles()[i]->getX() < getX()
@@ -68,15 +70,20 @@ bool TileGrid::pieceFits(Piece* piece, Coordinate coord) {
         }
     }
     return inBounds;
+}
 
+bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
+    return false;
 }
 
 
 void TileGrid::placePiece(Piece* piece, Coordinate coord) {
-    //std::cout << coord.getX() << " " << coord.getY() << std::endl;
-
     piece->moveTo(coordToScreenPos(coord));
-
+    for (Coordinate formCoord : piece->getForm()) {
+        this->pieceGrid[coord.getX() + formCoord.getX()][coord.getY() + formCoord.getY()] = piece;
+    }
 }
 
+void TileGrid::removePiece(Piece *piece) {
 
+}

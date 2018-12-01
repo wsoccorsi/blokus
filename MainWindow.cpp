@@ -101,7 +101,6 @@ void MainWindow::render() {
             drawable->draw(width, height);
         }
     }
-    std::cout << "render" << std::endl;
 
     glutSwapBuffers();
 }
