@@ -3,6 +3,7 @@
 
 #import <vector>
 #import <unordered_map>
+#include <functional>
 
 class EventHandler {
 public:

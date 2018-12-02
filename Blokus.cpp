@@ -14,10 +14,13 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
             clickedPiece->flip();
             clickedPiece->updateTiles();
             update();
-            return EventHandler::CONTINUE;
+
 
         }
+        return EventHandler::CONTINUE;
     });
+
+
 
     getEventListener().on(MainWindow::Event::KEY_LEFT, [=] {
         if(this->clickedPiece != NULL) {
@@ -25,8 +28,9 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
             clickedPiece->rotateLeft();
             clickedPiece->updateTiles();
             update();
-            return EventHandler::CONTINUE;
+
         }
+        return EventHandler::CONTINUE;
     });
 
     getEventListener().on(MainWindow::Event::KEY_RIGHT, [=] {
@@ -34,8 +38,9 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
             clickedPiece->rotateRight();
             clickedPiece->updateTiles();
             update();
-            return EventHandler::CONTINUE;
+
         }
+        return EventHandler::CONTINUE;
     });
 
     board = new Board(this, 30, 30);

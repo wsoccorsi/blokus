@@ -13,8 +13,6 @@
 #else
 #include <GL/glut.h>
 #endif
-#include "EventListener.h"
-=======
 #include "EventHandler.h"
 
 // TODO
@@ -28,7 +26,6 @@
 // - algorithm to place a computer player's piece
 // - click on trays at beginning of game to determine the number and order of humans vs. computers
 // - make color scheme prettier
->>>>>>> abd9327f07374f8f82591d89226efa3450fddb32
 
 int main(int argc, char** argv) {
 
