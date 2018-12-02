@@ -56,11 +56,12 @@ void Piece::onClick(Coordinate coord) {
 
     if (blokus->clickedPiece == nullptr) {
         blokus->clickedPiece = this;
+        moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {
                 return EventHandler::ReturnType::POP;
             }
-            moveTo(Coordinate(blokus->getMouseX(), blokus->getMouseY()));
+            moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
             return EventHandler::ReturnType::CONTINUE;
         });
     }
