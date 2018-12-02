@@ -21,10 +21,7 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
         this->tiles.push_back(tile);
     }
 
-    blokus->getEventListener().on(MainWindow::Event::KEY_UP, [] {
-        std::cout << "key up" << std::endl;
-        return EventHandler::CONTINUE;
-    });
+
 }
 
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
@@ -37,15 +34,40 @@ void Piece::draw(int width, int height) {
 }
 
 void Piece::rotateLeft() {
+    int tempX = 0;
+    int tempY = 0;
+for (int i = 0; i < form.size(); ++i){
+    tempX = form[i].getX();
+    tempY = form[i].getY();
+    form[i].setX(tempY);
+    form[i].setY(tempX*-1);
+
+}
 
 }
 
 void Piece::rotateRight() {
+    int tempX = 0;
+    int tempY = 0;
+    for (int i = 0; i < form.size(); ++i){
+        tempX = form[i].getX();
+        tempY = form[i].getY();
+        form[i].setX(tempY*-1);
+        form[i].setY(tempX);
 
+    }
 }
 
 void Piece::flip() {
+    int tempX = 0;
+    int tempY = 0;
+    for (int i = 0; i < form.size(); ++i){
+        tempX = form[i].getX();
+        tempY = form[i].getY();
+        form[i].setX(tempY*-1);
+        form[i].setY(tempX);
 
+    }
 }
 
 void Piece::moveTo(Coordinate coord) {

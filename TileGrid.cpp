@@ -62,16 +62,14 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
 
     //iterating through form and checking boundaries
     for(int i = 0; i < form.size(); i++){
-        if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * x_tiles)
-         || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * y_tiles)
+        if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * (x_tiles-1))
+         || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * (y_tiles-1))
          || piece->getTiles()[i]->getX() < getX()
          || piece->getTiles()[i]->getY() < getY()){
             return false;
-        } else {
-            inBounds = true;
         }
     }
-    return inBounds;
+    return true;
 }
 
 bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {

@@ -121,6 +121,7 @@ void MainWindow::render() {
     }
 
     glutSwapBuffers();
+
 }
 
 EventHandler& MainWindow::getEventListener() {

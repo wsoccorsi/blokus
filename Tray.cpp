@@ -43,6 +43,13 @@ void Tray::createPieces() {
             Coordinate(3, -1)
     }, player), Coordinate(6, 1));
 
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(1, -1),
+            Coordinate(2, 0),
+    }, player), Coordinate(13, 1));
+
     for (Piece* piece : this->pieces) {
         MainWindow::addDrawable(piece);
         MainWindow::addClickable(piece);

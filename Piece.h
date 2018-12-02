@@ -31,6 +31,8 @@ public:
     void onClick(Coordinate coord) override;
     bool isInBounds(Coordinate coord) override;
 
+    void updateTiles();
+
 private:
     Blokus* blokus;
     std::vector<Coordinate> form;
@@ -40,7 +42,6 @@ private:
 
     std::vector<Tile*> tiles;
 
-    void updateTiles();
 };
 
 
