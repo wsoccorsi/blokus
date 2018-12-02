@@ -12,7 +12,11 @@ class MainWindow: public EventHandler {
 public:
     enum Event {
         MOUSE_MOVE,
-        MOUSE_CLICK
+        MOUSE_CLICK,
+        KEY_DOWN,
+        KEY_LEFT,
+        KEY_UP,
+        KEY_RIGHT
     };
 
     explicit MainWindow(std::string title, int width=400, int height=500);
@@ -43,6 +47,7 @@ protected:
     static void render();
     static void onResize(int width, int height);
     static void onClick(int button, int state, int x, int y);
+    static void onSpecialKeyDown(int key, int x, int y);
     static void onMouseMove(int x, int y);
 
 };

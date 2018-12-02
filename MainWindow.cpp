@@ -40,6 +40,7 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
     glutReshapeFunc(onResize);
     glutMouseFunc(onClick);
     glutPassiveMotionFunc(onMouseMove);
+    glutSpecialFunc(onSpecialKeyDown);
     glutDisplayFunc(render);
 }
 
@@ -88,6 +89,23 @@ void MainWindow::onMouseMove(int x, int y) {
     mouseX = x;
     mouseY = y;
     eventHandler.fire(Event::MOUSE_MOVE);
+}
+
+void MainWindow::onSpecialKeyDown(int key, int x, int y) {
+    switch(key) {
+        case GLUT_KEY_DOWN:
+            eventHandler.fire(Event::KEY_DOWN);
+            break;
+        case GLUT_KEY_LEFT:
+            eventHandler.fire(Event::KEY_LEFT);
+            break;
+        case GLUT_KEY_RIGHT:
+            eventHandler.fire(Event::KEY_RIGHT);
+            break;
+        case GLUT_KEY_UP:
+            eventHandler.fire(Event::KEY_UP);
+            break;
+    }
 }
 
 void MainWindow::render() {

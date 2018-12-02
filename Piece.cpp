@@ -20,6 +20,11 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
         tile->setColor(255, 0, 0);
         this->tiles.push_back(tile);
     }
+
+    blokus->getEventListener().on(MainWindow::Event::KEY_UP, [] {
+        std::cout << "key up" << std::endl;
+        return EventHandler::CONTINUE;
+    });
 }
 
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
