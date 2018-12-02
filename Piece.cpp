@@ -59,13 +59,10 @@ void Piece::rotateRight() {
 }
 
 void Piece::flip() {
-    int tempX = 0;
     int tempY = 0;
     for (int i = 0; i < form.size(); ++i){
-        tempX = form[i].getX();
         tempY = form[i].getY();
-        form[i].setX(tempY*-1);
-        form[i].setY(tempX);
+        form[i].setY(tempY*-1);
 
     }
 }

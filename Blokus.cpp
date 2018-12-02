@@ -11,7 +11,9 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     getEventListener().on(MainWindow::Event::KEY_UP, [=] {
         if(this->clickedPiece != NULL) {
 
-            cout << "key up" << endl;
+            clickedPiece->flip();
+            clickedPiece->updateTiles();
+            update();
             return EventHandler::CONTINUE;
 
         }
