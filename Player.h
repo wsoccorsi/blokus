@@ -8,7 +8,7 @@ class Blokus;
 
 class Player {
 public:
-    explicit Player(Blokus* blokus, std::string title, Coordinate trayCoord);
+    explicit Player(Blokus* blokus, std::string title, Coordinate trayCoord, int color);
 
 private:
     Blokus* blokus;

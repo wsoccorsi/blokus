@@ -27,28 +27,178 @@ Tray::Tray(Blokus* blokus, Player* player, int x, int y, int tiles_x, int tiles_
 void Tray::createPieces() {
     // https://c2strategy.files.wordpress.com/2011/04/piecenamesall.png
     // TODO the rest of them
+    //  I5
     this->placePiece(new Piece(blokus, std::vector<Coordinate> {
             Coordinate(0, 0),
             Coordinate(1, 0),
             Coordinate(2, 0),
             Coordinate(3, 0),
             Coordinate(4, 0)
-    }, player), Coordinate(0, 0));
+    }, player), Coordinate(10, 0));
 
+    //  N
     this->placePiece(new Piece(blokus, std::vector<Coordinate> {
             Coordinate(0, 0),
             Coordinate(1, 0),
             Coordinate(1, -1),
             Coordinate(2, -1),
             Coordinate(3, -1)
-    }, player), Coordinate(6, 1));
+    }, player), Coordinate(11, 3));
 
+    //  T4
     this->placePiece(new Piece(blokus, std::vector<Coordinate> {
             Coordinate(0, 0),
             Coordinate(1, 0),
             Coordinate(1, -1),
             Coordinate(2, 0),
-    }, player), Coordinate(13, 1));
+    }, player), Coordinate(14, 4));
+
+    //  V5
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(0, -1),
+            Coordinate(0, -2),
+    }, player), Coordinate(0, 7));
+
+    //  T5
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(1, -1),
+            Coordinate(1, -2),
+    }, player), Coordinate(6, 7));
+
+    //  U
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, -1),
+            Coordinate(2, -1),
+            Coordinate(2, 0),
+    }, player), Coordinate(9, 9));
+
+    //  L5
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, 1),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(3, 0),
+    }, player), Coordinate(0, 0));
+
+    //  Y
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(1, 1),
+            Coordinate(2, 0),
+            Coordinate(3, 0),
+    }, player), Coordinate(11, 6));
+
+    //  Z5
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(2, 1),
+    }, player), Coordinate(3, 5));
+
+    //  W
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, 0),
+            Coordinate(1, 1),
+            Coordinate(2, 1),
+    }, player), Coordinate(16, 1));
+
+    //  P
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(0, 1),
+            Coordinate(1, 1),
+            Coordinate(0, 2),
+    }, player), Coordinate(1, 2));
+
+    //  X
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(1, -1),
+            Coordinate(1, 1),
+            Coordinate(2, 0),
+    }, player), Coordinate(17, 5));
+
+    //  F
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, 1),
+            Coordinate(1, 0),
+            Coordinate(1, -1),
+            Coordinate(2, 0),
+    }, player), Coordinate(8, 2));
+
+    //  Z4
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, 0),
+            Coordinate(1, 1),
+    }, player), Coordinate(4, 8));
+
+    //  I4
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(3, 0),
+    }, player), Coordinate(5, 0));
+
+    //  L4
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+    }, player), Coordinate(4, 2));
+
+    //  O
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(0, -1),
+            Coordinate(1, -1),
+            Coordinate(1, 0),
+    }, player), Coordinate(9, 5));
+
+    //  I3
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+    }, player), Coordinate(15, 7));
+
+    //  V3
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(1, 1),
+    }, player), Coordinate(18, 0));
+
+    //  2
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+    }, player), Coordinate(13, 8));
+
+    //  1
+    this->placePiece(new Piece(blokus, std::vector<Coordinate> {
+            Coordinate(0, 0),
+    }, player), Coordinate(6, 4));
 
     for (Piece* piece : this->pieces) {
         MainWindow::addDrawable(piece);

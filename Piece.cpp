@@ -36,13 +36,13 @@ void Piece::draw(int width, int height) {
 void Piece::rotateLeft() {
     int tempX = 0;
     int tempY = 0;
-for (int i = 0; i < form.size(); ++i){
-    tempX = form[i].getX();
-    tempY = form[i].getY();
-    form[i].setX(tempY);
-    form[i].setY(tempX*-1);
+    for (int i = 0; i < form.size(); ++i){
+        tempX = form[i].getX();
+        tempY = form[i].getY();
+        form[i].setX(tempY);
+        form[i].setY(tempX*-1);
 
-}
+    }
 
 }
 
