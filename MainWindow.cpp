@@ -16,13 +16,13 @@ int MainWindow::height = 0;
 int MainWindow::mouseX = 0;
 int MainWindow::mouseY = 0;
 
-EventListener MainWindow::eventListener = EventListener();
+EventHandler MainWindow::eventHandler = EventHandler();
 
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
 std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
 
-MainWindow::MainWindow(std::string title, int width, int height): EventListener() {
+MainWindow::MainWindow(std::string title, int width, int height) : EventHandler() {
     MainWindow::title = title;
     MainWindow::width = width;
     MainWindow::height = height;
@@ -40,6 +40,7 @@ MainWindow::MainWindow(std::string title, int width, int height): EventListener(
     glutReshapeFunc(onResize);
     glutMouseFunc(onClick);
     glutPassiveMotionFunc(onMouseMove);
+    glutSpecialFunc(onSpecialKeyDown);
     glutDisplayFunc(render);
 }
 
@@ -87,7 +88,24 @@ void MainWindow::onClick(int button, int state, int x, int y) {
 void MainWindow::onMouseMove(int x, int y) {
     mouseX = x;
     mouseY = y;
-    eventListener.fire(Event::MOUSE_MOVE);
+    eventHandler.fire(Event::MOUSE_MOVE);
+}
+
+void MainWindow::onSpecialKeyDown(int key, int x, int y) {
+    switch(key) {
+        case GLUT_KEY_DOWN:
+            eventHandler.fire(Event::KEY_DOWN);
+            break;
+        case GLUT_KEY_LEFT:
+            eventHandler.fire(Event::KEY_LEFT);
+            break;
+        case GLUT_KEY_RIGHT:
+            eventHandler.fire(Event::KEY_RIGHT);
+            break;
+        case GLUT_KEY_UP:
+            eventHandler.fire(Event::KEY_UP);
+            break;
+    }
 }
 
 void MainWindow::render() {
@@ -101,13 +119,13 @@ void MainWindow::render() {
             drawable->draw(width, height);
         }
     }
-    std::cout << "render" << std::endl;
 
     glutSwapBuffers();
+
 }
 
-EventListener& MainWindow::getEventListener() {
-    return eventListener;
+EventHandler& MainWindow::getEventListener() {
+    return eventHandler;
 }
 
 int MainWindow::getMouseX() {

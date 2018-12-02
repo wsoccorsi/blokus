@@ -6,13 +6,17 @@
 #include <unordered_map>
 #include "Drawable.h"
 #include "Clickable.h"
-#include "EventListener.h"
+#include "EventHandler.h"
 
-class MainWindow: public EventListener {
+class MainWindow: public EventHandler {
 public:
     enum Event {
         MOUSE_MOVE,
-        MOUSE_CLICK
+        MOUSE_CLICK,
+        KEY_DOWN,
+        KEY_LEFT,
+        KEY_UP,
+        KEY_RIGHT
     };
 
     explicit MainWindow(std::string title, int width=400, int height=500);
@@ -22,7 +26,7 @@ public:
 
     static void update();
 
-    static EventListener& getEventListener();
+    static EventHandler& getEventListener();
 
     static int getMouseX();
     static int getMouseY();
@@ -35,7 +39,7 @@ protected:
     static int mouseX;
     static int mouseY;
 
-    static EventListener eventListener;
+    static EventHandler eventHandler;
 
     static std::vector<std::vector<Drawable*>> drawables; // z index : drawables
     static std::vector<std::vector<Clickable*>> clickables;
@@ -43,6 +47,7 @@ protected:
     static void render();
     static void onResize(int width, int height);
     static void onClick(int button, int state, int x, int y);
+    static void onSpecialKeyDown(int key, int x, int y);
     static void onMouseMove(int x, int y);
 
 };

@@ -6,9 +6,10 @@ Piece::Piece() {
 
 }
 
-Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawable(x, y, 3), Clickable(1) {
+Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x, int y): Drawable(x, y, 3), Clickable(1) {
     this->blokus = blokus;
     this->form = form;
+    this->player = player;
     this->x = x;
     this->y = y;
 
@@ -19,7 +20,11 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawab
         tile->setColor(255, 0, 0);
         this->tiles.push_back(tile);
     }
+
+
 }
+
+Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
 
 void Piece::draw(int width, int height) {
     Drawable::draw(width, height);
@@ -29,15 +34,37 @@ void Piece::draw(int width, int height) {
 }
 
 void Piece::rotateLeft() {
+    int tempX = 0;
+    int tempY = 0;
+for (int i = 0; i < form.size(); ++i){
+    tempX = form[i].getX();
+    tempY = form[i].getY();
+    form[i].setX(tempY);
+    form[i].setY(tempX*-1);
+
+}
 
 }
 
 void Piece::rotateRight() {
+    int tempX = 0;
+    int tempY = 0;
+    for (int i = 0; i < form.size(); ++i){
+        tempX = form[i].getX();
+        tempY = form[i].getY();
+        form[i].setX(tempY*-1);
+        form[i].setY(tempX);
 
+    }
 }
 
 void Piece::flip() {
+    int tempY = 0;
+    for (int i = 0; i < form.size(); ++i){
+        tempY = form[i].getY();
+        form[i].setY(tempY*-1);
 
+    }
 }
 
 void Piece::moveTo(Coordinate coord) {
@@ -53,12 +80,13 @@ void Piece::onClick(Coordinate coord) {
 
     if (blokus->clickedPiece == nullptr) {
         blokus->clickedPiece = this;
+        moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {
-                return EventListener::ReturnType::POP;
+                return EventHandler::ReturnType::POP;
             }
-            moveTo(Coordinate(blokus->getMouseX(), blokus->getMouseY()));
-            return EventListener::ReturnType::CONTINUE;
+            moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
+            return EventHandler::ReturnType::CONTINUE;
         });
     }
 }
@@ -81,4 +109,16 @@ void Piece::updateTiles() {
         tiles[i]->setX(x + coord.getX() * Tile::TILE_SIZE);
         tiles[i]->setY(y + coord.getY() * Tile::TILE_SIZE);
     }
+}
+
+std::vector<Coordinate> Piece::getForm() const{
+    return form;
+}
+
+std::vector<Tile *> Piece::getTiles()  {
+    return tiles;
+}
+
+Player *Piece::getPlayer() {
+    return this->player;
 }

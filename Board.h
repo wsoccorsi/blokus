@@ -13,6 +13,8 @@ public:
     Board();
     Board(Blokus* blokus, int x, int y);
 
+    bool isValidMove(Piece *piece, Coordinate coord) override;
+
 protected:
     Blokus* blokus;
 };

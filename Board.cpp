@@ -17,7 +17,7 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
             tile->setOnClick([&] (Coordinate coord) {
                 if (this->blokus->clickedPiece != nullptr) {
                     Coordinate pieceCoord = screenPosToCoord(coord);
-                    if (pieceFits(this->blokus->clickedPiece, pieceCoord)) {
+                    if (isValidMove(this->blokus->clickedPiece, pieceCoord)) {
                         placePiece(this->blokus->clickedPiece, pieceCoord);
                         this->blokus->clickedPiece = nullptr;
                     }
@@ -25,4 +25,14 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
             });
         }
     }
+}
+
+bool Board::isValidMove(Piece* piece, Coordinate coord) {
+    if (!pieceIsWithinBounds(piece, coord)) {
+        return false;
+    }
+    if (pieceOverlaps(piece, coord)) {
+        return false;
+    }
+    return true;
 }
