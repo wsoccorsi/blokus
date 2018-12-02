@@ -21,20 +21,26 @@ Tray::Tray(Blokus* blokus, Player* player, int x, int y, int tiles_x, int tiles_
         }
     }
 
+    createPieces();
+}
+
+void Tray::createPieces() {
+    // https://c2strategy.files.wordpress.com/2011/04/piecenamesall.png
+    // TODO the rest of them
     this->placePiece(new Piece(blokus, std::vector<Coordinate> {
-        Coordinate(0, 0),
-        Coordinate(1, 0),
-        Coordinate(2, 0),
-        Coordinate(3, 0),
-        Coordinate(4, 0)
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(2, 0),
+            Coordinate(3, 0),
+            Coordinate(4, 0)
     }, player), Coordinate(0, 0));
 
     this->placePiece(new Piece(blokus, std::vector<Coordinate> {
-        Coordinate(0, 0),
-        Coordinate(1, 0),
-        Coordinate(1, -1),
-        Coordinate(2, -1),
-        Coordinate(3, -1)
+            Coordinate(0, 0),
+            Coordinate(1, 0),
+            Coordinate(1, -1),
+            Coordinate(2, -1),
+            Coordinate(3, -1)
     }, player), Coordinate(6, 1));
 
     for (Piece* piece : this->pieces) {

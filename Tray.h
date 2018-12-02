@@ -16,6 +16,8 @@ public:
 protected:
     Blokus* blokus;
     Player* player;
+
+    void createPieces();
 };
 
 
