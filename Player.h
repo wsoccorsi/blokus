@@ -1,14 +1,21 @@
 #ifndef BLOKUS_PLAYER_H
 #define BLOKUS_PLAYER_H
 
-#include <string>
+#include "Piece.h"
+#include "Tray.h"
+
+class Blokus;
 
 class Player {
 public:
-    explicit Player(std::string title);
+    explicit Player(Blokus* blokus, std::string title, Coordinate trayCoord);
 
 private:
+    Blokus* blokus;
     std::string title;
+
+    std::vector<Piece*> pieces;
+    Tray* tray;
 };
 
 

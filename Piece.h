@@ -7,16 +7,19 @@
 #include "Tile.h"
 #include "Clickable.h"
 
+
 class Blokus;
+class Player;
 
 class Piece: public Drawable, public Clickable {
 public:
     Piece();
-    Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y);
+    Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x, int y);
+    Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player);
 
     std::vector<Coordinate> getForm() const;
-
-    std::vector<Tile *> getTiles() ;
+    std::vector<Tile *> getTiles();
+    Player* getPlayer();
 
     void draw(int width, int height) override;
 
@@ -31,6 +34,7 @@ public:
 private:
     Blokus* blokus;
     std::vector<Coordinate> form;
+    Player* player;
     int x;
     int y;
 

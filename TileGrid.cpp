@@ -13,6 +13,8 @@ TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
         this->pieceGrid.push_back(std::vector<Piece*>(y_tiles));
     }
 
+    this->pieces = std::vector<Piece*>();
+
     for (int x_tile = 0; x_tile < x_tiles; x_tile++) {
         std::vector<Tile*> column = std::vector<Tile*>();
         for (int y_tile = 0; y_tile < y_tiles; y_tile++) {
@@ -82,8 +84,8 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
     for (Coordinate formCoord : piece->getForm()) {
         this->pieceGrid[coord.getX() + formCoord.getX()][coord.getY() + formCoord.getY()] = piece;
     }
+    this->pieces.push_back(piece);
 }
 
 void TileGrid::removePiece(Piece *piece) {
-
 }

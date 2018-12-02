@@ -33,6 +33,7 @@ protected:
 
     std::vector<std::vector<Tile*>> tiles;
     std::vector<std::vector<Piece*>> pieceGrid;
+    std::vector<Piece*> pieces;
 };
 
 

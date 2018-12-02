@@ -6,9 +6,10 @@ Piece::Piece() {
 
 }
 
-Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawable(x, y, 3), Clickable(1) {
+Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x, int y): Drawable(x, y, 3), Clickable(1) {
     this->blokus = blokus;
     this->form = form;
+    this->player = player;
     this->x = x;
     this->y = y;
 
@@ -20,6 +21,8 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, int x, int y): Drawab
         this->tiles.push_back(tile);
     }
 }
+
+Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
 
 void Piece::draw(int width, int height) {
     Drawable::draw(width, height);
@@ -89,4 +92,8 @@ std::vector<Coordinate> Piece::getForm() const{
 
 std::vector<Tile *> Piece::getTiles()  {
     return tiles;
+}
+
+Player *Piece::getPlayer() {
+    return this->player;
 }
