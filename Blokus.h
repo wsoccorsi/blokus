@@ -7,7 +7,7 @@
 
 class Blokus: public MainWindow {
 public:
-    explicit Blokus(int width=900, int height=700);
+    explicit Blokus(int width=1300, int height=850);
     Piece* clickedPiece;
 
 protected:
