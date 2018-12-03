@@ -73,6 +73,12 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
 }
 
 bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
+    for(Coordinate formCoord : piece->getForm()){
+        if(pieceGrid[coord.getX()+formCoord.getX()][coord.getY()+formCoord.getY()] != nullptr){
+            return true;
+        }
+    }
+
     return false;
 }
 
