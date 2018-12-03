@@ -27,6 +27,16 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
     }
 }
 
+bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
+    std::vector<Coordinate> pieceCoords;
+
+    return false;
+}
+
+bool Board::cornersDoTouch(Piece *piece, Coordinate coord) {
+    return false;
+}
+
 bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (!pieceIsWithinBounds(piece, coord)) {
         return false;

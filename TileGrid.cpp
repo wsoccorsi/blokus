@@ -78,7 +78,6 @@ bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
             return true;
         }
     }
-
     return false;
 }
 
@@ -92,4 +91,9 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
 }
 
 void TileGrid::removePiece(Piece *piece) {
+    Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
+    for (Coordinate formCoord : piece->getForm()) {
+        this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
+    }
+    this->pieces.pop_back();
 }
