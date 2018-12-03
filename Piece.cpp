@@ -76,12 +76,17 @@ void Piece::moveTo(Coordinate coord) {
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
     std::cout << "piece clicked" << std::endl;
+    int previousZ = this->getZ();
+    this->setZ(15);
+    MainWindow::updateDrawables();
 
     if (blokus->clickedPiece == nullptr) {
         blokus->clickedPiece = this;
         moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {
+                this->setZ(previousZ);
+                MainWindow::updateDrawables();
                 return EventHandler::ReturnType::POP;
             }
             moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));

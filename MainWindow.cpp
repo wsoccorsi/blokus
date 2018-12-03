@@ -52,6 +52,19 @@ void MainWindow::addDrawable(Drawable* drawable) {
     drawables[drawable->getZ()].push_back(drawable);
 }
 
+void MainWindow::updateDrawables() {
+    std::vector<std::vector<Drawable*>> newDrawables = drawables;
+    drawables = std::vector<std::vector<Drawable*>>();
+
+    for (std::vector<Drawable*> drawablesForZ : newDrawables) {
+        for (Drawable* drawable : drawablesForZ) {
+            addDrawable(drawable);
+        }
+    }
+    render();
+    update();
+}
+
 void MainWindow::addClickable(Clickable* clickable) {
     while (clickables.size() < clickable->getClickPriority() + 1) {
         clickables.push_back(std::vector<Clickable*>());

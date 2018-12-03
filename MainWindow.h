@@ -22,6 +22,8 @@ public:
     explicit MainWindow(std::string title, int width=400, int height=500);
 
     static void addDrawable(Drawable* drawable);
+    static void updateDrawables();
+
     static void addClickable(Clickable* clickable);
 
     static void update();
