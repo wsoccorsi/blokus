@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Piece.h"
 #include "Blokus.h"
+#include "Player.h"
 
 Piece::Piece() {
 
@@ -17,11 +18,9 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
 
     for (Coordinate coord : form) {
         Tile* tile = new Tile(x + coord.getX() * Tile::TILE_SIZE, y + coord.getY() * Tile::TILE_SIZE);
-        tile->setColor(255, 0, 0);
+        tile->setColor(player->getColor());
         this->tiles.push_back(tile);
     }
-
-
 }
 
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}

@@ -1,23 +1,19 @@
 #include "Tile.h"
 
 Tile::Tile(int x, int y): Drawable(x, y, 2), Clickable(2) {
-    this->red = 0;
-    this->green = 0;
-    this->blue = 0;
+    this->color = Color();
 }
 
-void Tile::setColor(GLfloat red, GLfloat green, GLfloat blue) {
-    this->red = red;
-    this->green = green;
-    this->blue = blue;
+void Tile::setColor(Color color) {
+    this->color = color;
 }
 
 void Tile::draw(int width, int height) {
     Drawable::draw(width, height); //WHY!!!
 
-    glColor3f(red/2, green/2, blue/2);
+    glColor3f(color.getR()/2, color.getG()/2, color.getB()/2);
     glRectf(x, y, x + TILE_SIZE, y + TILE_SIZE);
-    glColor3f(red, green, blue);
+    glColor3f(color.getR(), color.getG(), color.getB());
     glRectf(x + 1, y + 1, x + TILE_SIZE - 1, y + TILE_SIZE - 1);
 }
 

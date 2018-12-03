@@ -27,7 +27,7 @@ file(GLOB SOURCE_FILES
         )
 
 
-add_executable(main.cpp ${SOURCE_FILES})
+add_executable(main.cpp ${SOURCE_FILES} Color.cpp Color.h)
 
 if (WIN32)
     target_link_libraries (main.cpp ${OPENGL_LIBRARIES} freeglut)

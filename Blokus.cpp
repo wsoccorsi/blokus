@@ -44,10 +44,10 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     board = new Board(this, 420, 220);
     addDrawable(board);
 
-    Player* player1 = new Player(this, "player 1", Coordinate(10, 220), 1);
-    Player* player2 = new Player(this, "player 2", Coordinate(420, 10), 2);
-    Player* player3 = new Player(this, "player 3", Coordinate(830, 220), 3);
-    Player* player4 = new Player(this, "player 4", Coordinate(420, 630), 4);
+    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(10, 320));
+    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 10));
+    Player* player3 = new Player(this, Color(0.05, 0.47, 0.25), "player 3", Coordinate(830, 320));
+    Player* player4 = new Player(this, Color(0.90, 0.80, 0.29), "player 4", Coordinate(420, 630));
 
 
 }

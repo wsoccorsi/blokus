@@ -8,10 +8,23 @@ class Blokus;
 
 class Player {
 public:
-    explicit Player(Blokus* blokus, std::string title, Coordinate trayCoord, int color);
+    explicit Player(Blokus* blokus, Color color, std::string title, Coordinate trayCoord);
+
+    const Color &getColor() const;
+
+    void setColor(const Color &color);
+
+    const std::string &getTitle() const;
+
+    void setTitle(const std::string &title);
+
+    Tray *getTray() const;
+
+    void setTray(Tray *tray);
 
 private:
     Blokus* blokus;
+    Color color;
     std::string title;
 
     std::vector<Piece*> pieces;
