@@ -126,3 +126,5 @@ std::vector<Tile *> Piece::getTiles()  {
 Player *Piece::getPlayer() {
     return this->player;
 }
+
+

@@ -95,5 +95,14 @@ void TileGrid::removePiece(Piece *piece) {
     for (Coordinate formCoord : piece->getForm()) {
         this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
     }
-    this->pieces.pop_back();
+
+    for (int i = 0; i < getPieces().size(); i++){
+        if (piece == getPieces()[i]){
+            pieces.erase(pieces.begin() + i); //removes the piece at this index
+        }
+    }
+}
+
+std::vector<Piece*> TileGrid::getPieces() const {
+    return pieces;
 }
