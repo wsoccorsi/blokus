@@ -10,8 +10,15 @@ public:
     explicit Blokus(int width=1300, int height=850);
     Piece* clickedPiece;
 
+    Player *getCurrentPlayer() const;
+    void nextPlayerTurn();
+
+
 protected:
     TileGrid* board;
+    Player* currentPlayer;
+    std::vector<Player* > players;
+    int indexPlayers;
 };
 
 

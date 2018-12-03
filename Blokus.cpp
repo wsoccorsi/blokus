@@ -41,12 +41,39 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
         return EventHandler::CONTINUE;
     });
 
-    board = new Board(this, 420, 220);
+    board = new Board(this, 420, 270);
     addDrawable(board);
 
-    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(10, 320));
-    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 10));
+    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(70, 320));
+    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 100));
     Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(830, 320));
-    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(420, 630));
+    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(420, 590));
+
+
+    players.push_back(player1);
+    players.push_back(player2);
+    players.push_back(computer1);
+    players.push_back(computer2);
+
+    //index through vector
+    //create function current player
+    indexPlayers = 0;
+    currentPlayer = players[indexPlayers];
+
 
 }
+
+Player *Blokus::getCurrentPlayer() const {
+    return currentPlayer;
+}
+
+void Blokus::nextPlayerTurn() {
+    indexPlayers = indexPlayers + 1;
+    if(indexPlayers == players.size()){
+        indexPlayers = 0;
+    }
+    currentPlayer = players[indexPlayers];
+
+}
+
+

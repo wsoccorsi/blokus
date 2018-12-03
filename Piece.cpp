@@ -80,7 +80,7 @@ void Piece::onClick(Coordinate coord) {
     this->setZ(15);
     MainWindow::updateDrawables();
 
-    if (blokus->clickedPiece == nullptr) {
+    if (blokus->clickedPiece == nullptr && blokus->getCurrentPlayer() == player) {
         blokus->clickedPiece = this;
         moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {

@@ -14,12 +14,13 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
         for (Tile* tile : tileColumn) {
             MainWindow* mainWindow = (MainWindow*) this->blokus;
             mainWindow->addClickable(tile);
-            tile->setOnClick([&] (Coordinate coord) {
+            tile->setOnClick([=] (Coordinate coord) {
                 if (this->blokus->clickedPiece != nullptr) {
                     Coordinate pieceCoord = screenPosToCoord(coord);
                     if (isValidMove(this->blokus->clickedPiece, pieceCoord)) {
                         placePiece(this->blokus->clickedPiece, pieceCoord);
                         this->blokus->clickedPiece = nullptr;
+                        blokus->nextPlayerTurn();
                     }
                 }
             });
