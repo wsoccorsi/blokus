@@ -55,8 +55,7 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     players.push_back(computer1);
     players.push_back(computer2);
 
-    //index through vector
-    //create function current player
+
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
 }
