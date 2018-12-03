@@ -91,14 +91,15 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
 }
 
 void TileGrid::removePiece(Piece *piece) {
-    Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
-    for (Coordinate formCoord : piece->getForm()) {
-        this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
-    }
+//    Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
+//    for (Coordinate formCoord : piece->getForm()) {
+//        this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
+//    }
 
     for (int i = 0; i < getPieces().size(); i++){
         if (piece == getPieces()[i]){
             pieces.erase(pieces.begin() + i); //removes the piece at this index
+            break;
         }
     }
 }
