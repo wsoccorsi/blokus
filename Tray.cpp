@@ -204,6 +204,7 @@ void Tray::createPieces() {
         MainWindow::addDrawable(piece);
         MainWindow::addClickable(piece);
     }
+
 }
 
 bool Tray::isValidMove(Piece *piece, Coordinate coord) {

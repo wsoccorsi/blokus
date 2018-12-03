@@ -27,6 +27,8 @@ public:
     void placePiece(Piece* piece, Coordinate coord);
     void removePiece(Piece* piece);
 
+    std::vector<Piece*> getPieces() const;
+
 protected:
     int x_tiles;
     int y_tiles;
