@@ -59,8 +59,6 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     //create function current player
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
-
-
 }
 
 Player *Blokus::getCurrentPlayer() const {
