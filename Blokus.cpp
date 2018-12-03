@@ -1,7 +1,7 @@
 #include "Blokus.h"
 #include "Player.h"
 #include "Board.h"
-
+#include "Computer.h"
 #include <iostream>
 using namespace std;
 
@@ -46,8 +46,7 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(10, 320));
     Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 10));
-    Player* player3 = new Player(this, Color(0.05, 0.47, 0.25), "player 3", Coordinate(830, 320));
-    Player* player4 = new Player(this, Color(0.90, 0.80, 0.29), "player 4", Coordinate(420, 630));
-
+    Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(830, 320));
+    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(420, 630));
 
 }

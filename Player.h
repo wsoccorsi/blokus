@@ -7,20 +7,23 @@
 class Blokus;
 
 class Player {
+
 public:
+
+
     explicit Player(Blokus* blokus, Color color, std::string title, Coordinate trayCoord);
 
-    const Color &getColor() const;
+    virtual const Color &getColor() const;
 
-    void setColor(const Color &color);
+    virtual void setColor(const Color &color);
 
-    const std::string &getTitle() const;
+    virtual const std::string &getTitle() const;
 
-    void setTitle(const std::string &title);
+    virtual void setTitle(const std::string &title);
 
-    Tray *getTray() const;
+    virtual Tray *getTray() const;
 
-    void setTray(Tray *tray);
+    virtual void setTray(Tray *tray);
 
 private:
     Blokus* blokus;

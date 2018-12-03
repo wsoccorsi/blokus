@@ -29,7 +29,7 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
 
     glutInitDisplayMode(GLUT_RGBA | GLUT_SINGLE);
     glutInitWindowSize(width, height);
-    glutCreateWindow("Main Window");
+    glutCreateWindow("Blokus Team 8");
 
     glClearColor(0, 0, 0, 0);
     //glDisable(GL_DEPTH_TEST);

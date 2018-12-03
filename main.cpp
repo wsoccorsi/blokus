@@ -16,8 +16,8 @@
 
 // TODO
 // - create the rest of the pieces
-// - piece rotation
-// - tray rotation w/ automatic piece rotation (so we don't have to place all the pieces in every tray)
+// - (X) piece rotation
+// - (X) tray rotation w/ automatic piece rotation (so we don't have to place all the pieces in every tray)
 // - maintain state of current player's turn
 // - board detect if player's piece is bordering an edge
 // - board detect if player's piece is bordering a corner
