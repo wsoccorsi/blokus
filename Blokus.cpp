@@ -10,12 +10,9 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     getEventListener().on(MainWindow::Event::KEY_UP, [=] {
         if(this->clickedPiece != NULL) {
-
             clickedPiece->flip();
             clickedPiece->updateTiles();
             update();
-
-
         }
         return EventHandler::CONTINUE;
     });

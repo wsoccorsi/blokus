@@ -27,9 +27,19 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
     }
 }
 
-bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
-    std::vector<Coordinate> pieceCoords;
+std::vector<Coordinate> Board::openSpacesForPlayer(Player* player) {
+    for (Piece* piece : pieces) {
+        Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
+        std::vector<Coordinate> corners = piece->getTileCoordsWithCorners();
+        for (Coordinate corner : corners) {
+            corner.setX(pieceCoord.getX() + corner.getX());
+            corner.setY()
+        }
+    }
+    return std::vector<Coordinate>();
+}
 
+bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
     return false;
 }
 

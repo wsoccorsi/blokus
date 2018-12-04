@@ -13,6 +13,8 @@ public:
     Board();
     Board(Blokus* blokus, int x, int y);
 
+    std::vector<Coordinate> openSpacesForPlayer(Player* player);
+
     bool doesBorderOwnEdge(Piece* piece, Coordinate coord);
     bool cornersDoTouch(Piece* piece, Coordinate coord);
     bool isValidMove(Piece *piece, Coordinate coord) override;

@@ -10,11 +10,6 @@
 
 class Computer : public Player {
 
-private:
-
-
-
-
 public:
 
 

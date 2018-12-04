@@ -21,6 +21,8 @@ public:
     std::vector<Tile *> getTiles();
     Player* getPlayer();
 
+    std::vector<Coordinate> getTileCoordsWithCorners();
+
     void draw(int width, int height) override;
 
     void rotateLeft();
