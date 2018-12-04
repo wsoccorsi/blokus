@@ -1,6 +1,15 @@
 #include "Tray.h"
 #include "Blokus.h"
 
+/**
+ *
+ * @param blokus
+ * @param player
+ * @param x
+ * @param y
+ * @param tiles_x
+ * @param tiles_y
+ */
 Tray::Tray(Blokus* blokus, Player* player, int x, int y, int tiles_x, int tiles_y) : TileGrid(x, y, tiles_x, tiles_y) {
     this->blokus = blokus;
     this->player = player;
@@ -24,6 +33,9 @@ Tray::Tray(Blokus* blokus, Player* player, int x, int y, int tiles_x, int tiles_
     createPieces();
 }
 
+/**
+ *
+ */
 void Tray::createPieces() {
     // https://c2strategy.files.wordpress.com/2011/04/piecenamesall.png
     // TODO the rest of them
@@ -207,6 +219,12 @@ void Tray::createPieces() {
 
 }
 
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool Tray::isValidMove(Piece *piece, Coordinate coord) {
     if (!pieceIsWithinBounds(piece, coord)) {
         return false;

@@ -9,6 +9,9 @@
 
 #include "Coordinate.h"
 
+/**
+ *
+ */
 std::string MainWindow::title = "";
 int MainWindow::width = 0;
 int MainWindow::height = 0;
@@ -21,7 +24,12 @@ EventHandler MainWindow::eventHandler = EventHandler();
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
 std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
-
+/**
+ *
+ * @param title
+ * @param width
+ * @param height
+ */
 MainWindow::MainWindow(std::string title, int width, int height) : EventHandler() {
     MainWindow::title = title;
     MainWindow::width = width;
@@ -44,6 +52,10 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
     glutDisplayFunc(render);
 }
 
+/**
+ *
+ * @param drawable
+ */
 void MainWindow::addDrawable(Drawable* drawable) {
     while (drawables.size() < drawable->getZ() + 1) {
         drawables.push_back(std::vector<Drawable*>());
@@ -52,6 +64,9 @@ void MainWindow::addDrawable(Drawable* drawable) {
     drawables[drawable->getZ()].push_back(drawable);
 }
 
+/**
+ *
+ */
 void MainWindow::updateDrawables() {
     std::vector<std::vector<Drawable*>> newDrawables = drawables;
     drawables = std::vector<std::vector<Drawable*>>();
@@ -64,7 +79,10 @@ void MainWindow::updateDrawables() {
     render();
     update();
 }
-
+/**
+ *
+ * @param clickable
+ */
 void MainWindow::addClickable(Clickable* clickable) {
     while (clickables.size() < clickable->getClickPriority() + 1) {
         clickables.push_back(std::vector<Clickable*>());
@@ -72,10 +90,18 @@ void MainWindow::addClickable(Clickable* clickable) {
     clickables[clickable->getClickPriority()].push_back(clickable);
 }
 
+/**
+ *
+ */
 void MainWindow::update() {
     glutPostRedisplay();
 }
 
+/**
+ *
+ * @param width
+ * @param height
+ */
 void MainWindow::onResize(int width, int height) {
     MainWindow::width = width;
     MainWindow::height = height;
@@ -83,6 +109,13 @@ void MainWindow::onResize(int width, int height) {
     std::cout << width << ", " << height << std::endl;
 }
 
+/**
+ *
+ * @param button
+ * @param state
+ * @param x
+ * @param y
+ */
 void MainWindow::onClick(int button, int state, int x, int y) {
     Coordinate coord = Coordinate(x, y);
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
@@ -98,12 +131,23 @@ void MainWindow::onClick(int button, int state, int x, int y) {
     }
 }
 
+/**
+ *
+ * @param x
+ * @param y
+ */
 void MainWindow::onMouseMove(int x, int y) {
     mouseX = x;
     mouseY = y;
     eventHandler.fire(Event::MOUSE_MOVE);
 }
 
+/**
+ *
+ * @param key
+ * @param x
+ * @param y
+ */
 void MainWindow::onSpecialKeyDown(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
@@ -121,6 +165,9 @@ void MainWindow::onSpecialKeyDown(int key, int x, int y) {
     }
 }
 
+/**
+ *
+ */
 void MainWindow::render() {
     glClear(GL_COLOR_BUFFER_BIT);
     //glMatrixMode(GL_PROJECTION);
@@ -137,14 +184,26 @@ void MainWindow::render() {
 
 }
 
+/**
+ *
+ * @return
+ */
 EventHandler& MainWindow::getEventListener() {
     return eventHandler;
 }
 
+/**
+ *
+ * @return
+ */
 int MainWindow::getMouseX() {
     return mouseX;
 }
 
+/**
+ *
+ * @return
+ */
 int MainWindow::getMouseY() {
     return mouseY;
 }

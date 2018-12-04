@@ -1,11 +1,20 @@
 #include <string>
 #include "EventHandler.h"
 
+/**
+ *
+ */
 EventHandler::EventHandler() {
     this->callbacks = std::unordered_map<int, std::unordered_map<unsigned long, std::function<int()>>>();
     this->nextId = 0;
 }
 
+/**
+ *
+ * @param event
+ * @param callback
+ * @return
+ */
 unsigned long EventHandler::on(int event, std::function<int()> callback) {
     unsigned long callbackId = nextId;
     callbacks[event][callbackId] = callback;
@@ -13,10 +22,19 @@ unsigned long EventHandler::on(int event, std::function<int()> callback) {
     return callbackId;
 }
 
+/**
+ *
+ * @param event
+ * @param id
+ */
 void EventHandler::pop(int event, unsigned long id) {
     callbacks[event].erase(id);
 }
 
+/**
+ *
+ * @param event
+ */
 void EventHandler::fire(int event) {
     std::vector<unsigned long> idsToPop = std::vector<unsigned long>();
 

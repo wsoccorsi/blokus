@@ -5,6 +5,12 @@
 #include <iostream>
 using namespace std;
 
+/**
+ *
+ *
+ * @param width
+ * @param height
+ */
 Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     this->clickedPiece = nullptr;
 
@@ -60,10 +66,21 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     currentPlayer = players[indexPlayers];
 }
 
+/**
+ * This class creates a Player function called getCurrentPlayer
+ * this returns the current player
+ *
+ * @return
+ */
 Player *Blokus::getCurrentPlayer() const {
     return currentPlayer;
 }
 
+/**
+ * Indexes through the players assigning the current player each time a
+ * player places a piece
+ *
+ */
 void Blokus::nextPlayerTurn() {
     indexPlayers = indexPlayers + 1;
     if(indexPlayers == players.size()){
