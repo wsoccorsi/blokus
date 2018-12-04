@@ -3,6 +3,9 @@
 GLdouble width, height;
 int wd;
 
+/**
+ *
+ */
 void init() {
     width = 500;
     height = 500;

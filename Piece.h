@@ -35,12 +35,15 @@ public:
 
     void updateTiles();
 
+
+
 private:
     Blokus* blokus;
     std::vector<Coordinate> form;
     Player* player;
     int x;
     int y;
+
 
     std::vector<Tile*> tiles;
 

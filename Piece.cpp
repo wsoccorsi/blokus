@@ -3,10 +3,21 @@
 #include "Blokus.h"
 #include "Player.h"
 
+/**
+ *
+ */
 Piece::Piece() {
 
 }
 
+/**
+ *
+ * @param blokus
+ * @param form
+ * @param player
+ * @param x
+ * @param y
+ */
 Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x, int y): Drawable(x, y, 3), Clickable(1) {
     this->blokus = blokus;
     this->form = form;
@@ -23,8 +34,15 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
     }
 }
 
+/**
+ *
+ * @param blokus
+ * @param form
+ * @param player
+ */
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
 
+<<<<<<< HEAD
 std::vector<Coordinate> Piece::getTileCoordsWithCorners() {
     std::vector<Coordinate> tileCoordsWithCorners = std::vector<Coordinate>();
     for (Coordinate coord : form) {
@@ -44,6 +62,13 @@ std::vector<Coordinate> Piece::getTileCoordsWithCorners() {
     return tileCoordsWithCorners;
 }
 
+=======
+/**
+ *
+ * @param width
+ * @param height
+ */
+>>>>>>> 38cc4c8495103dcd3f306fe22fc47d0073e2fc2d
 void Piece::draw(int width, int height) {
     Drawable::draw(width, height);
     for (Tile* tile : tiles) {
@@ -51,6 +76,9 @@ void Piece::draw(int width, int height) {
     }
 }
 
+/**
+ *
+ */
 void Piece::rotateLeft() {
     int tempX = 0;
     int tempY = 0;
@@ -64,6 +92,9 @@ void Piece::rotateLeft() {
 
 }
 
+/**
+ *
+ */
 void Piece::rotateRight() {
     int tempX = 0;
     int tempY = 0;
@@ -76,6 +107,9 @@ void Piece::rotateRight() {
     }
 }
 
+/**
+ *
+ */
 void Piece::flip() {
     int tempY = 0;
     for (int i = 0; i < form.size(); ++i){
@@ -85,6 +119,10 @@ void Piece::flip() {
     }
 }
 
+/**
+ *
+ * @param coord
+ */
 void Piece::moveTo(Coordinate coord) {
     x = coord.getX();
     y = coord.getY();
@@ -92,6 +130,10 @@ void Piece::moveTo(Coordinate coord) {
     blokus->update();
 }
 
+/**
+ *
+ * @param coord
+ */
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
     std::cout << "piece clicked" << std::endl;
@@ -99,7 +141,7 @@ void Piece::onClick(Coordinate coord) {
     this->setZ(15);
     MainWindow::updateDrawables();
 
-    if (blokus->clickedPiece == nullptr) {
+    if (blokus->clickedPiece == nullptr && blokus->getCurrentPlayer() == player) {
         blokus->clickedPiece = this;
         moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
@@ -114,6 +156,11 @@ void Piece::onClick(Coordinate coord) {
     }
 }
 
+/**
+ *
+ * @param coord
+ * @return
+ */
 bool Piece::isInBounds(Coordinate coord) {
     if (blokus->clickedPiece == this) {
         return false;
@@ -126,6 +173,9 @@ bool Piece::isInBounds(Coordinate coord) {
     return false;
 }
 
+/**
+ *
+ */
 void Piece::updateTiles() {
     for (int i = 0; i < form.size(); i++) {
         Coordinate coord = form[i];
@@ -134,14 +184,28 @@ void Piece::updateTiles() {
     }
 }
 
+/**
+ *
+ * @return
+ */
 std::vector<Coordinate> Piece::getForm() const{
     return form;
 }
 
+/**
+ *
+ * @return
+ */
 std::vector<Tile *> Piece::getTiles()  {
     return tiles;
 }
 
+/**
+ *
+ * @return
+ */
 Player *Piece::getPlayer() {
     return this->player;
 }
+
+

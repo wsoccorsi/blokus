@@ -2,6 +2,13 @@
 #include <iostream>
 TileGrid::TileGrid() {}
 
+/**
+ *
+ * @param x
+ * @param y
+ * @param x_tiles
+ * @param y_tiles
+ */
 TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
     this->x_tiles = x_tiles;
     this->y_tiles = y_tiles;
@@ -26,6 +33,11 @@ TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
     }
 }
 
+/**
+ *
+ * @param width
+ * @param height
+ */
 void TileGrid::draw(int width, int height) {
     Drawable::draw(width, height);
     for (std::vector<Tile*> column : tiles) {
@@ -35,6 +47,11 @@ void TileGrid::draw(int width, int height) {
     }
 }
 
+/**
+ *
+ * @param coord
+ * @return
+ */
 Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
     if (coord.getX() > x + x_tiles * Tile::TILE_SIZE || coord.getX() < x ||
         coord.getY() > y + y_tiles * Tile::TILE_SIZE || coord.getY() < y) {
@@ -43,10 +60,20 @@ Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
     return Coordinate((coord.getX() - x) / Tile::TILE_SIZE, (coord.getY() - y) / Tile::TILE_SIZE);
 }
 
+/**
+ *
+ * @param coord
+ * @return
+ */
 Coordinate TileGrid::coordToScreenPos(Coordinate coord) {
     return Coordinate(x + coord.getX() * Tile::TILE_SIZE, y + coord.getY() * Tile::TILE_SIZE);
 }
 
+/**
+ *
+ * @param coord
+ * @return
+ */
 Tile* TileGrid::screenPosToTile(Coordinate coord) {
     Coordinate gridCoord = screenPosToCoord(coord);
     if (gridCoord.getX() > -1) {
@@ -55,6 +82,12 @@ Tile* TileGrid::screenPosToTile(Coordinate coord) {
     return nullptr;
 }
 
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
     //First Find the Boundaries of the board
     std::vector<Coordinate> form = piece->getForm();
@@ -72,6 +105,12 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
     return true;
 }
 
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
     for(Coordinate formCoord : piece->getForm()){
         if(pieceGrid[coord.getX()+formCoord.getX()][coord.getY()+formCoord.getY()] != nullptr){
@@ -81,7 +120,11 @@ bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
     return false;
 }
 
-
+/**
+ *
+ * @param piece
+ * @param coord
+ */
 void TileGrid::placePiece(Piece* piece, Coordinate coord) {
     piece->moveTo(coordToScreenPos(coord));
     for (Coordinate formCoord : piece->getForm()) {
@@ -90,10 +133,28 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
     this->pieces.push_back(piece);
 }
 
+/**
+ *
+ * @param piece
+ */
 void TileGrid::removePiece(Piece *piece) {
-    Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
-    for (Coordinate formCoord : piece->getForm()) {
-        this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
+//    Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
+//    for (Coordinate formCoord : piece->getForm()) {
+//        this->pieceGrid[pieceCoord.getX() + formCoord.getX()][pieceCoord.getY() + formCoord.getY()] = nullptr;
+//    }
+
+    for (int i = 0; i < getPieces().size(); i++){
+        if (piece == getPieces()[i]){
+            pieces.erase(pieces.begin() + i); //removes the piece at this index
+            break;
+        }
     }
-    this->pieces.pop_back();
+}
+
+/**
+ *
+ * @return
+ */
+std::vector<Piece*> TileGrid::getPieces() const {
+    return pieces;
 }

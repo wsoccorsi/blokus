@@ -3,10 +3,20 @@
 #include "Blokus.h"
 
 
+/**
+ *
+ */
 Board::Board() {
     this->blokus = nullptr;
 }
 
+/**
+ * Creates the board
+ *
+ * @param blokus
+ * @param x
+ * @param y
+ */
 Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
     this->blokus = blokus;
 
@@ -14,12 +24,13 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
         for (Tile* tile : tileColumn) {
             MainWindow* mainWindow = (MainWindow*) this->blokus;
             mainWindow->addClickable(tile);
-            tile->setOnClick([&] (Coordinate coord) {
+            tile->setOnClick([=] (Coordinate coord) {
                 if (this->blokus->clickedPiece != nullptr) {
                     Coordinate pieceCoord = screenPosToCoord(coord);
                     if (isValidMove(this->blokus->clickedPiece, pieceCoord)) {
                         placePiece(this->blokus->clickedPiece, pieceCoord);
                         this->blokus->clickedPiece = nullptr;
+                        blokus->nextPlayerTurn();
                     }
                 }
             });
@@ -39,14 +50,31 @@ std::vector<Coordinate> Board::openSpacesForPlayer(Player* player) {
     return std::vector<Coordinate>();
 }
 
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
-    return false;
+    std::vector<Coordinate> pieceCoords;
 }
 
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool Board::cornersDoTouch(Piece *piece, Coordinate coord) {
     return false;
 }
-
+/**
+ *
+ * @param piece
+ * @param coord
+ * @return
+ */
 bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (!pieceIsWithinBounds(piece, coord)) {
         return false;
