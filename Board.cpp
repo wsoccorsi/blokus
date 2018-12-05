@@ -75,6 +75,82 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     }
 
     int edgeCase = 0;
+    int checkXPos = 1; int checkXNeg = -1;
+    int checkYPos = 1; int checkYNeg = -1;
+    Coordinate c;
+
+    for (int i = 0; i < piece->getForm().size(); i++){
+        c.setX(piece->getForm()[i].getX() + coord.getX());
+        c.setY(piece->getForm()[i].getY() + coord.getY());
+
+
+        if (c.getX() == 0 && c.getY() == 0){
+            edgeCase = 1;
+        }
+        else if (c.getX() == 19 && c.getY() == 0){
+            edgeCase = 2;
+        }
+        else if (c.getX() == 0 && c.getY() == 19){
+            edgeCase = 3;
+        }
+        else if (c.getX() == 19 && c.getY() == 19){
+            edgeCase = 4;
+        }
+        else if (c.getX() == 0){
+            edgeCase = 5;
+        }
+        else if (c.getY() == 0){
+            edgeCase = 6;
+        }
+        else if (c.getX() == 19){
+            edgeCase = 7;
+        }
+        else if (c.getY() == 19){
+            edgeCase = 8;
+        }
+
+
+    }
+
+
+    switch (edgeCase){
+        //do nothing
+        case 0:
+            break;
+
+        case 1: //Top left corner
+            checkXNeg = 0;
+            checkYNeg = 0;
+            break;
+        case 2: //Top right corner
+            checkXPos = 0;
+            checkYNeg = 0;
+            break;
+        case 3: //Bottom left corner
+            checkXNeg = 0;
+            checkYPos = 0;
+            break;
+        case 4: //Bottom right corner
+            checkXPos = 0;
+            checkYPos = 0;
+            break;
+        case 5: //left side of the board
+            checkXNeg = 0;
+            break;
+        case 6: //Top of the board
+            checkYNeg = 0;
+            break;
+        case 7://right of board
+            checkXPos = 0;
+            break;
+        case 8: //bottom of board
+            checkYPos = 0;
+            break;
+
+    }
+
+
+
 
     for (int i = 0; i < piece->getForm().size(); ++i){
 
@@ -86,22 +162,16 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
 
 
                         //Check Y
-                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +1] != 0
-                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() -1] != 0
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYNeg] != 0
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYPos] != 0
 
-                        //Check X but not to the left
-                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()-1][piece->getForm()[i].getY() + coord.getY()] != 0
-                        || pieceGrid[piece->getForm()[i].getX() + coord.getX() +1][piece->getForm()[i].getY() + coord.getY()] != 0) {
+                        //Check X but
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() + coord.getY()] != 0
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() + coord.getY()] != 0) {
 
 
                     return false;
                 }
-
-
-
-
-
-
 
 
 
