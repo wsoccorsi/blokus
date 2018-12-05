@@ -42,7 +42,6 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
  */
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
 
-<<<<<<< HEAD
 std::vector<Coordinate> Piece::getTileCoordsWithCorners() {
     std::vector<Coordinate> tileCoordsWithCorners = std::vector<Coordinate>();
     for (Coordinate coord : form) {
@@ -62,13 +61,11 @@ std::vector<Coordinate> Piece::getTileCoordsWithCorners() {
     return tileCoordsWithCorners;
 }
 
-=======
 /**
  *
  * @param width
  * @param height
  */
->>>>>>> 38cc4c8495103dcd3f306fe22fc47d0073e2fc2d
 void Piece::draw(int width, int height) {
     Drawable::draw(width, height);
     for (Tile* tile : tiles) {

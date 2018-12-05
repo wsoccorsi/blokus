@@ -44,7 +44,7 @@ std::vector<Coordinate> Board::openSpacesForPlayer(Player* player) {
         std::vector<Coordinate> corners = piece->getTileCoordsWithCorners();
         for (Coordinate corner : corners) {
             corner.setX(pieceCoord.getX() + corner.getX());
-            corner.setY()
+            corner.setY(pieceCoord.getY() + corner.getY());
         }
     }
     return std::vector<Coordinate>();
@@ -58,6 +58,7 @@ std::vector<Coordinate> Board::openSpacesForPlayer(Player* player) {
  */
 bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
     std::vector<Coordinate> pieceCoords;
+    return false;
 }
 
 /**
