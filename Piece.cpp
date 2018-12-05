@@ -134,11 +134,15 @@ void Piece::moveTo(Coordinate coord) {
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
     std::cout << "piece clicked" << std::endl;
-    this->setZ(15);
-    MainWindow::updateDrawables();
 
     if (blokus->clickedPiece == nullptr && blokus->getCurrentPlayer() == player) {
         blokus->clickedPiece = this;
+
+        this->setZ(15);
+        MainWindow::updateDrawables();
+
+        tileGrid->removePiece(this);
+
         moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {

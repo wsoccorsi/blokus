@@ -15,10 +15,10 @@
 #include "EventHandler.h"
 
 // TODO
-// - create the rest of the pieces
+// - (x) create the rest of the pieces
 // - (X) piece rotation
 // - (X) tray rotation w/ automatic piece rotation (so we don't have to place all the pieces in every tray)
-// - maintain state of current player's turn
+// - (x) maintain state of current player's turn
 // - board detect if player's piece is bordering an edge
 // - board detect if player's piece is bordering a corner
 // - algorithm to determine if player has a move they can make
