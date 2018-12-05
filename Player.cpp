@@ -67,3 +67,4 @@ Tray *Player::getTray() const {
 void Player::setTray(Tray *tray) {
     Player::tray = tray;
 }
+

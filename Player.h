@@ -25,6 +25,7 @@ public:
 
     virtual void setTray(Tray *tray);
 
+
 private:
     Blokus* blokus;
     Color color;
@@ -32,6 +33,7 @@ private:
 
     std::vector<Piece*> pieces;
     Tray* tray;
+
 };
 
 
