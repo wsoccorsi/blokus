@@ -29,6 +29,10 @@ public:
 
     std::vector<Piece*> getPieces() const;
 
+    std::vector<std::vector<Piece*>> getPieceGrid() const;
+
+    void findCorners();
+
 protected:
     int x_tiles;
     int y_tiles;

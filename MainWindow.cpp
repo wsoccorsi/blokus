@@ -207,3 +207,4 @@ int MainWindow::getMouseX() {
 int MainWindow::getMouseY() {
     return mouseY;
 }
+

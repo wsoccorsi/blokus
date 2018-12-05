@@ -19,6 +19,7 @@ public:
     bool cornersDoTouch(Piece* piece, Coordinate coord);
     bool isValidMove(Piece *piece, Coordinate coord) override;
 
+
 protected:
     Blokus* blokus;
 };

@@ -45,6 +45,8 @@ private:
     std::vector<Coordinate> form;
     Player* player;
     TileGrid* tileGrid;
+    int x;
+    int y;
 
 
     std::vector<Tile*> tiles;

@@ -92,7 +92,6 @@ Tile* TileGrid::screenPosToTile(Coordinate coord) {
 bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
     //First Find the Boundaries of the board
     std::vector<Coordinate> form = piece->getForm();
-    bool inBounds = false;
 
     //iterating through form and checking boundaries
     for(int i = 0; i < form.size(); i++){
@@ -163,4 +162,13 @@ void TileGrid::removePiece(Piece *piece) {
  */
 std::vector<Piece*> TileGrid::getPieces() const {
     return pieces;
+}
+
+std::vector<std::vector<Piece*>> TileGrid::getPieceGrid() const {
+    return pieceGrid;
+}
+
+void TileGrid::findCorners() {
+    getPieceGrid();
+
 }

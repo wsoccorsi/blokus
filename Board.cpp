@@ -38,17 +38,7 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
     }
 }
 
-std::vector<Coordinate> Board::openSpacesForPlayer(Player* player) {
-    for (Piece* piece : pieces) {
-        Coordinate pieceCoord = screenPosToCoord(Coordinate(piece->getX(), piece->getY()));
-        std::vector<Coordinate> corners = piece->getTileCoordsWithCorners();
-        for (Coordinate corner : corners) {
-            corner.setX(pieceCoord.getX() + corner.getX());
-            corner.setY(pieceCoord.getY() + corner.getY());
-        }
-    }
-    return std::vector<Coordinate>();
-}
+
 
 /**
  *
@@ -83,5 +73,24 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (pieceOverlaps(piece, coord)) {
         return false;
     }
+
+    //Check if its placeable
+    for (int i = 0; i < piece->getForm().size(); ++i){
+        if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY()] != 0
+
+            //Check Y
+            && pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +1] != 0
+            && pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() -1] != 0
+
+            //Check X
+            && pieceGrid[piece->getForm()[i].getX() + coord.getX() -1][piece->getForm()[i].getY() + coord.getY()] != 0
+            && pieceGrid[piece->getForm()[i].getX() + coord.getX() +1][piece->getForm()[i].getY() + coord.getY()] != 0) {
+
+            return false;
+        }
+    }
+
+
     return true;
 }
+
