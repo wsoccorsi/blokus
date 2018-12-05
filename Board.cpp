@@ -74,23 +74,38 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
         return false;
     }
 
-    //Check if its placeable
+    int edgeCase = 0;
+
     for (int i = 0; i < piece->getForm().size(); ++i){
-        if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY()] != 0
-
-            //Check Y
-            && pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +1] != 0
-            && pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() -1] != 0
-
-            //Check X
-            && pieceGrid[piece->getForm()[i].getX() + coord.getX() -1][piece->getForm()[i].getY() + coord.getY()] != 0
-            && pieceGrid[piece->getForm()[i].getX() + coord.getX() +1][piece->getForm()[i].getY() + coord.getY()] != 0) {
-
-            return false;
-        }
-    }
 
 
-    return true;
+                if (
+                        //Origin overlapping
+                        pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY()] != 0
+
+
+
+                        //Check Y
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +1] != 0
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() -1] != 0
+
+                        //Check X but not to the left
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX()-1][piece->getForm()[i].getY() + coord.getY()] != 0
+                        || pieceGrid[piece->getForm()[i].getX() + coord.getX() +1][piece->getForm()[i].getY() + coord.getY()] != 0) {
+
+
+                    return false;
+                }
+
+
+
+
+
+
+
+
+
 }
+    return true;
 
+}
