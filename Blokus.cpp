@@ -2,11 +2,12 @@
 #include "Player.h"
 #include "Board.h"
 #include "Computer.h"
+#include "Score.h"
 #include <iostream>
 using namespace std;
 
 /**
- *
+ * Blokus constructor that holds the key stroke functions
  *
  * @param width
  * @param height
@@ -47,6 +48,20 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     board = new Board(this, 420, 270);
     addDrawable(board);
 
+
+    Score* score1 = new Score(35, 150);
+    addDrawable(score1);
+
+    Score* score2 = new Score(35, 170);
+    addDrawable(score2);
+
+    Score* score3 = new Score(35, 190);
+    addDrawable(score3);
+
+    Score* score4 = new Score(35, 210);
+    addDrawable(score4);
+
+
     Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(70, 320));
     Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 100));
     Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(830, 320));
@@ -61,6 +76,8 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
+
+
 }
 
 /**
