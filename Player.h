@@ -25,12 +25,11 @@ public:
 
     virtual void setTray(Tray *tray);
 
-private:
+protected:
     Blokus* blokus;
     Color color;
     std::string title;
 
-    std::vector<Piece*> pieces;
     Tray* tray;
 };
 

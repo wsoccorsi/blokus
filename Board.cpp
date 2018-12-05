@@ -73,7 +73,7 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (pieceOverlaps(piece, coord)) {
         return false;
     }
-
+/*
     int edgeCase = 0;
     int checkXPos = 1; int checkXNeg = -1;
     int checkYPos = 1; int checkYNeg = -1;
@@ -196,6 +196,11 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
 
 
 }
+ */
     return true;
 
+}
+
+void Board::nextPlayerTurn() {
+    blokus->nextPlayerTurn();
 }

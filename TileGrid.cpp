@@ -93,12 +93,10 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
     //First Find the Boundaries of the board
     std::vector<Coordinate> form = piece->getForm();
 
-    //iterating through form and checking boundaries
-    for(int i = 0; i < form.size(); i++){
-        if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * (xTiles-1))
-         || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * (yTiles-1))
-         || piece->getTiles()[i]->getX() < getX()
-         || piece->getTiles()[i]->getY() < getY()){
+    for (Coordinate formCoord : form) {
+        Coordinate tilePosition = Coordinate(formCoord.getX() + coord.getX(), formCoord.getY() + coord.getY());
+        if (tilePosition.getX() > xTiles - 1 || tilePosition.getX() < 0 ||
+            tilePosition.getY() > yTiles - 1 || tilePosition.getY() < 0) {
             return false;
         }
     }
