@@ -11,8 +11,8 @@ TileGrid::TileGrid() {}
  * @param y_tiles
  */
 TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
-    this->x_tiles = x_tiles;
-    this->y_tiles = y_tiles;
+    this->xTiles = x_tiles;
+    this->yTiles = y_tiles;
 
     this->tiles = std::vector<std::vector<Tile*>>();
 
@@ -54,8 +54,8 @@ void TileGrid::draw(int width, int height) {
  * @return
  */
 Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
-    if (coord.getX() > x + x_tiles * Tile::TILE_SIZE || coord.getX() < x ||
-        coord.getY() > y + y_tiles * Tile::TILE_SIZE || coord.getY() < y) {
+    if (coord.getX() > x + xTiles * Tile::TILE_SIZE || coord.getX() < x ||
+        coord.getY() > y + yTiles * Tile::TILE_SIZE || coord.getY() < y) {
         return Coordinate(-1, -1);
     }
     return Coordinate((coord.getX() - x) / Tile::TILE_SIZE, (coord.getY() - y) / Tile::TILE_SIZE);
@@ -96,8 +96,8 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
 
     //iterating through form and checking boundaries
     for(int i = 0; i < form.size(); i++){
-        if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * (x_tiles-1))
-         || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * (y_tiles-1))
+        if (piece->getTiles()[i]->getX() > (getX() + Tile::TILE_SIZE * (xTiles-1))
+         || piece->getTiles()[i]->getY() > (getY() + Tile::TILE_SIZE * (yTiles-1))
          || piece->getTiles()[i]->getX() < getX()
          || piece->getTiles()[i]->getY() < getY()){
             return false;
@@ -163,4 +163,12 @@ void TileGrid::removePiece(Piece *piece) {
  */
 std::vector<Piece*> TileGrid::getPieces() const {
     return pieces;
+}
+
+int TileGrid::getXTiles() const {
+    return xTiles;
+}
+
+int TileGrid::getYTiles() const {
+    return yTiles;
 }

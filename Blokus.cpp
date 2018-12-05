@@ -64,8 +64,8 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(70, 320));
     Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(420, 100));
-    Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(830, 320));
-    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(420, 590));
+    Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(830, 320), board);
+    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(420, 590), board);
 
 
     players.push_back(player1);

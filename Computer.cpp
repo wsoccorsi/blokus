@@ -4,7 +4,6 @@
 
 #include "Computer.h"
 
-
 /**
  *
  * @param blokus
@@ -12,49 +11,27 @@
  * @param title
  * @param trayCoord
  */
-Computer::Computer(Blokus* blokus, Color color, std::string title, Coordinate trayCoord)
-                    : Player(blokus, color, title, trayCoord) {
+Computer::Computer(Blokus* blokus, Color color, std::string title, Coordinate trayCoord, Board* board) : Player(blokus, color, title, trayCoord) {
+    this->board = board;
+}
 
-
+void Computer::takeTurn() {
 
 }
 
-/**
- *
- * @return
- */
-const Color &Computer::getColor() const {
-    return color;
-}
+std::vector<Computer::PossibleMove> Computer::getPossibleMoves() {
+    std::vector<Computer::PossibleMove> possibleMoves = std::vector<Computer::PossibleMove>();
+    for (int x = 0; x < board->getXTiles(); x++) {
+        for (int y = 0; y < board->getYTiles(); y++) {
+            Coordinate position = Coordinate(x, y);
+            for (Piece* piece : tray->getPieces()) {
+                std::vector<Coordinate> form = piece->getForm();
+                for (int i = 0; i < 3; i++) {
+                    Piece* testPiece = new Piece(blokus, );
+                }
+            }
+        }
+    }
 
-/**
- *
- * @param color
- */
-void Computer::setColor(const Color &color) {
-    Computer::color = color;
-}
-
-/**
- *
- * @param title
- */
-void Computer::setTitle(const std::string &title) {
-    Computer::title = title;
-}
-
-/**
- *
- * @return
- */
-Tray *Computer::getTray() const {
-    return tray;
-}
-
-/**
- *
- * @param tray
- */
-void Computer::setTray(Tray *tray) {
-    Computer::tray = tray;
+    return possibleMoves;
 }

@@ -29,9 +29,13 @@ public:
 
     std::vector<Piece*> getPieces() const;
 
+    int getXTiles() const;
+
+    int getYTiles() const;
+
 protected:
-    int x_tiles;
-    int y_tiles;
+    int xTiles;
+    int yTiles;
 
     std::vector<std::vector<Tile*>> tiles;
     std::vector<std::vector<Piece*>> pieceGrid;

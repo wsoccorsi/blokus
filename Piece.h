@@ -46,7 +46,6 @@ private:
     Player* player;
     TileGrid* tileGrid;
 
-
     std::vector<Tile*> tiles;
 
 };

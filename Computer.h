@@ -3,6 +3,7 @@
 //
 
 #include "Player.h"
+#include "Board.h"
 
 #ifndef BLOKUS_COMPUTER_H
 #define BLOKUS_COMPUTER_H
@@ -11,32 +12,25 @@
 class Computer : public Player {
 
 public:
+     Computer(Blokus* blokus, Color color, std::string title, Coordinate trayCoord, Board* board);
 
-
-     Computer();
-
-     Computer(Blokus* blokus, Color color, std::string title, Coordinate trayCoord);
-
-     const Color &getColor() const override;
-
-     void setColor(const Color &color) override;
-
-     void setTitle(const std::string &title) override;
-
-     Tray *getTray() const override;
-
-     void setTray(Tray *tray) override;
-
+     void takeTurn();
 
 protected:
     Blokus* blokus;
     Color color;
     std::string title;
+    Board* board;
 
     std::vector<Piece*> pieces;
     Tray* tray;
 
+    struct PossibleMove {
+        Piece* piece;
+        Coordinate position;
+    };
 
+    std::vector<PossibleMove> getPossibleMoves();
 
 };
 
