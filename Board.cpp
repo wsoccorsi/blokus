@@ -78,6 +78,7 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     int checkXPos = 1; int checkXNeg = -1;
     int checkYPos = 1; int checkYNeg = -1;
     Coordinate c;
+    bool isOrigin = false;
 
     for (int i = 0; i < piece->getForm().size(); i++){
         c.setX(piece->getForm()[i].getX() + coord.getX());
@@ -85,28 +86,46 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
 
 
         if (c.getX() == 0 && c.getY() == 0){
-            edgeCase = 1;
+            std::cout << "Edge case 1" << std::endl;
+            edgeCase = 1; isOrigin = true;
+            break;
         }
         else if (c.getX() == 19 && c.getY() == 0){
-            edgeCase = 2;
+            std::cout << "Edge case 2" << std::endl;
+            edgeCase = 2; isOrigin = true;
+            break;
         }
         else if (c.getX() == 0 && c.getY() == 19){
-            edgeCase = 3;
+            std::cout << "Edge case 3" << std::endl;
+            edgeCase = 3; isOrigin = true;
+            break;
         }
         else if (c.getX() == 19 && c.getY() == 19){
-            edgeCase = 4;
+            std::cout << "Edge case 4" << std::endl;
+            edgeCase = 4; isOrigin = true;
+            break;
         }
-        else if (c.getX() == 0){
-            edgeCase = 5;
-        }
-        else if (c.getY() == 0){
-            edgeCase = 6;
-        }
-        else if (c.getX() == 19){
-            edgeCase = 7;
-        }
-        else if (c.getY() == 19){
-            edgeCase = 8;
+
+        if (isOrigin == false) {
+            for (int i = 0; i < piece->getForm().size(); i++) {
+                c.setX(piece->getForm()[i].getX() + coord.getX());
+                c.setY(piece->getForm()[i].getY() + coord.getY());
+                if (c.getX() == 0) {
+                    std::cout << "Edge case 5" << std::endl;
+                    edgeCase = 5;
+                    break;
+                } else if (c.getY() == 0) {
+                    std::cout << "Edge case 6" << std::endl;
+                    edgeCase = 6;
+                    break;
+                } else if (c.getX() == 19) {
+                    edgeCase = 7;
+                    break;
+                } else if (c.getY() == 19) {
+                    edgeCase = 8;
+                    break;
+                }
+            }
         }
 
 
@@ -121,6 +140,7 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
         case 1: //Top left corner
             checkXNeg = 0;
             checkYNeg = 0;
+            std::cout << "Case 1" << std:: endl;
             break;
         case 2: //Top right corner
             checkXPos = 0;
