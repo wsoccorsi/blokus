@@ -16,10 +16,11 @@ public:
         KEY_DOWN,
         KEY_LEFT,
         KEY_UP,
-        KEY_RIGHT
+        KEY_RIGHT,
+        KEY_F2
     };
 
-    explicit MainWindow(std::string title, int width=400, int height=500);
+    explicit MainWindow(std::string title, int width=500, int height=500);
 
     static void addDrawable(Drawable* drawable);
     static void updateDrawables();

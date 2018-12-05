@@ -39,7 +39,7 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
     glutInitWindowSize(width, height);
     glutCreateWindow("Blokus Team 8");
 
-    glClearColor(0, 0, 0, 0);
+    glClearColor(.9, .85, .7, 1);
     //glDisable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
 
@@ -162,6 +162,9 @@ void MainWindow::onSpecialKeyDown(int key, int x, int y) {
         case GLUT_KEY_UP:
             eventHandler.fire(Event::KEY_UP);
             break;
+        case GLUT_KEY_F2:
+            eventHandler.fire(Event::KEY_F2);
+            break;
     }
 }
 
@@ -185,24 +188,24 @@ void MainWindow::render() {
 }
 
 /**
- *
- * @return
+ * Getter for eventHandler
+ * @return eventHandler
  */
 EventHandler& MainWindow::getEventListener() {
     return eventHandler;
 }
 
 /**
- *
- * @return
+ * Getter for mouseX
+ * @return mouseX
  */
 int MainWindow::getMouseX() {
     return mouseX;
 }
 
 /**
- *
- * @return
+ * Getter for MouseY
+ * @return mouseY
  */
 int MainWindow::getMouseY() {
     return mouseY;

@@ -31,6 +31,7 @@ protected:
     std::string title;
 
     Tray* tray;
+
 };
 
 

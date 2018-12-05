@@ -27,7 +27,19 @@ TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
         std::vector<Tile*> column = std::vector<Tile*>();
         for (int y_tile = 0; y_tile < y_tiles; y_tile++) {
             Tile* tile = new Tile(x + x_tile * Tile::TILE_SIZE, y + y_tile * Tile::TILE_SIZE);
-            tile->setColor(Color(0.81, 0.86, 0.88));
+            if (y_tiles > 11){
+                if (x_tile==0 && y_tile==0)
+                    tile->setColor(Color(.8, .6, .6));
+                else if (x_tile==19 && y_tile==0)
+                    tile->setColor(Color(.6, .7, .8));
+                else if (x_tile==19 && y_tile==19)
+                    tile->setColor(Color(.6, .8, .7));
+                else if (x_tile==0 && y_tile==19)
+                    tile->setColor(Color(.8, .8, .6));
+                else
+                    tile->setColor(Color(0.81, 0.86, 0.88));
+            } else
+                tile->setColor(Color(0.81, 0.86, 0.88));
             column.push_back(tile);
         }
         tiles.push_back(column);
