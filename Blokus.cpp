@@ -90,7 +90,6 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(620, 240), board);
     Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(350, 460), board);
 
-
     players.push_back(player1);
     players.push_back(player2);
     players.push_back(computer1);
@@ -99,7 +98,6 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
-
 
 }
 
@@ -124,7 +122,9 @@ void Blokus::nextPlayerTurn() {
         indexPlayers = 0;
     }
     currentPlayer = players[indexPlayers];
-
+    if (Computer* computer = dynamic_cast<Computer*>(currentPlayer)) {
+        computer->takeTurn();
+    }
 }
 
 

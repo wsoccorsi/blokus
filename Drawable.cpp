@@ -41,7 +41,7 @@ int Drawable::getX() const {
  * @param x
  */
 void Drawable::setX(int x) {
-    Drawable::x = x;
+    this->x = x;
 }
 
 /**
@@ -57,7 +57,7 @@ int Drawable::getY() const {
  * @param y
  */
 void Drawable::setY(int y) {
-    Drawable::y = y;
+    this->y = y;
 }
 
 /**
@@ -73,5 +73,5 @@ int Drawable::getZ() const {
  * @param z
  */
 void Drawable::setZ(int z) {
-    Drawable::z = z;
+    this->z = z;
 }

@@ -75,7 +75,6 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (pieceOverlaps(piece, coord)) {
         return false;
     }
-
     /**
      * Edge checking data field
      */
@@ -237,13 +236,10 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
             }
         }
     }
-    if (isCorner) {
-        return true;
-    } else {
-        return false;
-    }
+    return isCorner;
 }
 
-
-
+void Board::nextPlayerTurn() {
+    blokus->nextPlayerTurn();
+}
 

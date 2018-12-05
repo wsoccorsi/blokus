@@ -12,8 +12,6 @@ Player::Player(Blokus* blokus, Color color, std::string title, Coordinate trayCo
     this->color = color;
     this->title = title;
 
-    this->pieces = std::vector<Piece*>();
-
     this->tray = new Tray(blokus, this, trayCoord.getX(), trayCoord.getY(), 20, 10);
     MainWindow::addDrawable(tray);
 
