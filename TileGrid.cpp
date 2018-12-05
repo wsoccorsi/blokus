@@ -1,4 +1,5 @@
 #include "TileGrid.h"
+#include "MainWindow.h"
 #include <iostream>
 TileGrid::TileGrid() {}
 
@@ -131,6 +132,10 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
         this->pieceGrid[coord.getX() + formCoord.getX()][coord.getY() + formCoord.getY()] = piece;
     }
     this->pieces.push_back(piece);
+    piece->setTileGrid(this);
+
+    piece->setZ(3);
+    MainWindow::updateDrawables();
 }
 
 /**
@@ -149,6 +154,7 @@ void TileGrid::removePiece(Piece *piece) {
             break;
         }
     }
+    piece->setTileGrid(nullptr);
 }
 
 /**

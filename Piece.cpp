@@ -134,7 +134,6 @@ void Piece::moveTo(Coordinate coord) {
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
     std::cout << "piece clicked" << std::endl;
-    int previousZ = this->getZ();
     this->setZ(15);
     MainWindow::updateDrawables();
 
@@ -143,8 +142,6 @@ void Piece::onClick(Coordinate coord) {
         moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
         blokus->getEventListener().on(Blokus::Event::MOUSE_MOVE, [=] {
             if (blokus->clickedPiece == nullptr) {
-                this->setZ(previousZ);
-                MainWindow::updateDrawables();
                 return EventHandler::ReturnType::POP;
             }
             moveTo(Coordinate(blokus->getMouseX() - Tile::TILE_SIZE / 2, blokus->getMouseY() - Tile::TILE_SIZE / 2));
@@ -203,6 +200,14 @@ std::vector<Tile *> Piece::getTiles()  {
  */
 Player *Piece::getPlayer() {
     return this->player;
+}
+
+TileGrid *Piece::getTileGrid() const {
+    return tileGrid;
+}
+
+void Piece::setTileGrid(TileGrid *tileGrid) {
+    Piece::tileGrid = tileGrid;
 }
 
 

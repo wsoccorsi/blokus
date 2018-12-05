@@ -10,6 +10,7 @@
 
 class Blokus;
 class Player;
+class TileGrid;
 
 class Piece: public Drawable, public Clickable {
 public:
@@ -35,12 +36,15 @@ public:
 
     void updateTiles();
 
+    TileGrid *getTileGrid() const;
 
+    void setTileGrid(TileGrid *tileGrid);
 
 private:
     Blokus* blokus;
     std::vector<Coordinate> form;
     Player* player;
+    TileGrid* tileGrid;
     int x;
     int y;
 
