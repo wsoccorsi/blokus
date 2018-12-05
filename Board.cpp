@@ -105,7 +105,6 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
             start.setY(19);
             break;
         case 4:
-            cout << "Case 4" << endl;
             start.setX(0);
             start.setY(19);
             break;
@@ -113,6 +112,9 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
 
     }
 
+    /**
+     * Only code that runs for the first 4 iterations
+     */
     if (turnCounter <= 4) {
         for (int k = 0; k < piece->getForm().size(); ++k) {
             c.setX(piece->getForm()[k].getX() + coord.getX());
@@ -153,26 +155,32 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
             }
 
             /**
-             * Checking to make sure its not a face side
+             * Checking to make sure its not a face side of the same piece
              */
-            if (
-                //Check Y
-                    pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +
-                                                                         checkYNeg] != 0
-                    || pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() +
-                                                                            checkYPos] != 0
-
-                    //Check X
-                    || pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() +
-                                                                                        coord.getY()] != 0
-                    || pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() +
-                                                                                        coord.getY()] != 0) {
-
-
-                return false; //if touching a face
-
-
+            if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYNeg] != 0)
+            {
+                if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYNeg]->getPlayer() == piece->getPlayer()){
+                    return false;
+                }
             }
+            else if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYPos] != 0) {
+                if(pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYPos]->getPlayer() == piece->getPlayer()){
+                    return false;
+                }
+            }
+            else if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() + coord.getY()] != 0){
+                if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() + coord.getY()]->getPlayer()== piece->getPlayer()){
+                    return false;
+                }
+            }
+            else if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() + coord.getY()] != 0){
+                if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() + coord.getY()]->getPlayer() == piece->getPlayer()){
+                    return false;
+                }
+            }
+
+
+
 
 
             /**
