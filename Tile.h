@@ -17,7 +17,7 @@ public:
 
     void setColor(Color color);
 
-    const static int TILE_SIZE = 15;
+    const static int TILE_SIZE = 12;
 
     void onClick(Coordinate coord) override;
     bool isInBounds(Coordinate coord) override;
