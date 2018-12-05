@@ -42,24 +42,9 @@ Piece::Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player, int x
  */
 Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piece(blokus, form, player, 0, 0) {}
 
-std::vector<Coordinate> Piece::getTileCoordsWithCorners() {
-    std::vector<Coordinate> tileCoordsWithCorners = std::vector<Coordinate>();
-    for (Coordinate coord : form) {
-        int verticalCount = 0;
-        int horizontalCount = 0;
-        for (Coordinate neighbor : form) {
-            if (neighbor.getX() == coord.getX() + 1 || neighbor.getX() == coord.getX() - 1) {
-                horizontalCount++;
-            } else if (neighbor.getY() == coord.getY() + 1 || neighbor.getY() == coord.getY() - 1) {
-                verticalCount++;
-            }
-        }
-        if (verticalCount < 2 || horizontalCount < 2) {
-            tileCoordsWithCorners.push_back(coord);
-        }
-    }
-    return tileCoordsWithCorners;
-}
+
+
+
 
 /**
  *

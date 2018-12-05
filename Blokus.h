@@ -4,6 +4,7 @@
 #include "MainWindow.h"
 #include "TileGrid.h"
 #include "EventHandler.h"
+#include "Board.h"
 
 class Blokus: public MainWindow {
 public:
@@ -16,7 +17,7 @@ public:
 
 
 protected:
-    TileGrid* board;
+    Board* board;
     Player* currentPlayer;
     std::vector<Player* > players;
     int indexPlayers;

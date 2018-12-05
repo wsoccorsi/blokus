@@ -30,8 +30,8 @@ public:
     std::vector<Piece*> getPieces() const;
 
     int getXTiles() const;
-
     int getYTiles() const;
+    std::vector<std::vector<Piece*>> getPieceGrid() const;
 
 protected:
     int xTiles;

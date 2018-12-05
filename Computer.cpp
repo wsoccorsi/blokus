@@ -27,7 +27,7 @@ std::vector<Computer::PossibleMove> Computer::getPossibleMoves() {
             for (Piece* piece : tray->getPieces()) {
                 std::vector<Coordinate> form = piece->getForm();
                 for (int i = 0; i < 3; i++) {
-                    Piece* testPiece = new Piece(blokus, );
+                    //Piece* testPiece = new Piece(blokus, );
                 }
             }
         }
