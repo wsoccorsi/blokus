@@ -19,12 +19,12 @@
 // - (X) piece rotation
 // - (X) tray rotation w/ automatic piece rotation (so we don't have to place all the pieces in every tray)
 // - (x) maintain state of current player's turn
-// - board detect if player's piece is bordering an edge
-// - board detect if player's piece is bordering a corner
-// - algorithm to determine if player has a move they can make
-// - algorithm to place a computer player's piece
+// - (x) board detect if player's piece is bordering an edge
+// - (x) board detect if player's piece is bordering a corner
+// - (x) algorithm to determine if player has a move they can make
+// - (x) algorithm to place a computer player's piece
 // - click on trays at beginning of game to determine the number and order of humans vs. computers
-// - make color scheme prettier
+// - (x) make color scheme prettier
 
 int main(int argc, char** argv) {
 
