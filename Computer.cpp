@@ -27,12 +27,16 @@ void Computer::takeTurn() {
 }
 
 void Computer::animatePieceMove(Piece* piece, Coordinate to) {
+    piece->setZ(15);
+    MainWindow::updateDrawables();
     blokus->getEventListener().on(MainWindow::Event::ANIMATE, [=] {
         Coordinate pieceScreenPos = Coordinate(piece->getX(), piece->getY());
         Coordinate pieceCoordinate = board->screenPosToCoord(Coordinate(pieceScreenPos));
         Coordinate toScreenPos = board->coordToScreenPos(Coordinate(to.getX(), to.getY()));
         if (pieceCoordinate == to) {
             board->placePiece(piece, to);
+            piece->setZ(3);
+            MainWindow::updateDrawables();
             board->nextPlayerTurn();
             return MainWindow::POP;
         }
