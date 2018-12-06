@@ -175,6 +175,45 @@ std::vector<Coordinate> Piece::getForm() const{
     return form;
 }
 
+std::vector<Coordinate> Piece::getCornerForm() const {
+    std::vector<Coordinate> cornerForm = std::vector<Coordinate>();
+    for (Coordinate formCoord : form) {
+        std::vector<Coordinate> cornersForTile = {
+            Coordinate(1, 1),
+            Coordinate(1, -1),
+            Coordinate(-1, 1),
+            Coordinate(-1, -1)
+        };
+        for (Coordinate edge : std::vector<Coordinate> {
+                Coordinate(0, 1),
+                Coordinate(0, -1),
+                Coordinate(1, 0),
+                Coordinate(-1, 0)
+        }) {
+            Coordinate relativeEdgePosition = formCoord + edge;
+            for (Coordinate otherFormCoord : form) {
+                if (otherFormCoord == relativeEdgePosition) {
+                    for (Coordinate cornerToRemove : std::vector<Coordinate> {
+                        edge + Coordinate(edge.getY(), edge.getX()),
+                        edge + Coordinate(edge.getY() * -1, edge.getX() * -1)
+                    }) {
+                        for (int i = 0; i < cornersForTile.size(); i++) {
+                            if (cornersForTile[i] == cornerToRemove){
+                                cornersForTile.erase(cornersForTile.begin() + i); //removes the piece at this index
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for (Coordinate cornerForTile : cornersForTile) {
+            cornerForm.push_back(formCoord + cornerForTile);
+        }
+    }
+    return cornerForm;
+}
+
 /**
  *
  * @return

@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-int turnCounter = 1;
 /**
  *
  */
@@ -75,168 +74,48 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     if (pieceOverlaps(piece, coord)) {
         return false;
     }
-    /**
-     * Edge checking data field
-     */
-    bool isCorner = false;
-    int checkXPos = 1;
-    int checkXNeg = -1;
-    int checkYPos = 1;
-    int checkYNeg = -1;
-    Coordinate c;
-    Coordinate start;
 
-    /**
-     * Checking start positions
-     */
-    switch (turnCounter) {
-
-        case 1:
-            start.setX(0);
-            start.setY(0);
-            break;
-        case 2:
-            start.setX(19);
-            start.setY(0);
-            break;
-        case 3:
-            start.setX(19);
-            start.setY(19);
-            break;
-        case 4:
-            start.setX(0);
-            start.setY(19);
-            break;
-
-
-    }
-
-    /**
-     * Only code that runs for the first 4 iterations
-     */
-    if (turnCounter <= 4) {
-        for (int k = 0; k < piece->getForm().size(); ++k) {
-            c.setX(piece->getForm()[k].getX() + coord.getX());
-            c.setY(piece->getForm()[k].getY() + coord.getY());
-            if (c.getX() == start.getX() && c.getY() == start.getY()) {
-                turnCounter++;
-                return true;
-            }
-        }
-    }
-    if (turnCounter > 4) {
-        for (int i = 0; i < piece->getForm().size(); ++i) {
-
-            /**
-             * Calculating edge cases (out of bounds cords)
-             */
-            c.setX(piece->getForm()[i].getX() + coord.getX());
-            c.setY(piece->getForm()[i].getY() + coord.getY());
-            if (c.getX() == 0) {
-                checkXNeg = 0;
-            } else {
-                checkXNeg = -1;
-            }
-            if (c.getY() == 0) {
-                checkYNeg = 0;
-            } else {
-                checkYNeg = -1;
-            }
-            if (c.getX() == 19) {
-                checkXPos = 0;
-            } else {
-                checkXPos = 1;
-            }
-            if (c.getY() == 19) {
-                checkYPos = 0;
-            } else {
-                checkYPos = 1;
-            }
-
-            /**
-             * Checking to make sure its not a face side of the same piece
-             */
-            if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYNeg] != 0)
-            {
-                if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYNeg]->getPlayer() == piece->getPlayer()){
-                    return false;
-                }
-            }
-            else if (pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYPos] != 0) {
-                if(pieceGrid[piece->getForm()[i].getX() + coord.getX()][piece->getForm()[i].getY() + coord.getY() + checkYPos]->getPlayer() == piece->getPlayer()){
-                    return false;
-                }
-            }
-            else if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() + coord.getY()] != 0){
-                if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXNeg][piece->getForm()[i].getY() + coord.getY()]->getPlayer()== piece->getPlayer()){
-                    return false;
-                }
-            }
-            else if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() + coord.getY()] != 0){
-                if(pieceGrid[piece->getForm()[i].getX() + coord.getX() + checkXPos][piece->getForm()[i].getY() + coord.getY()]->getPlayer() == piece->getPlayer()){
-                    return false;
-                }
-            }
-
-
-
-
-
-            /**
-            * Check for a corner of the same piece
-            */
-            for (int j = 0; j < piece->getForm().size(); ++j) {
-                c.setX(piece->getForm()[j].getX() + coord.getX());
-                c.setY(piece->getForm()[j].getY() + coord.getY());
-                if (c.getX() == 0) {
-                    checkXNeg = 0;
-                } else {
-                    checkXNeg = -1;
-                }
-                if (c.getY() == 0) {
-                    checkYNeg = 0;
-                } else {
-                    checkYNeg = -1;
-                }
-                if (c.getX() == 19) {
-                    checkXPos = 0;
-                } else {
-                    checkXPos = 1;
-                }
-                if (c.getY() == 19) {
-                    checkYPos = 0;
-                } else {
-                    checkYPos = 1;
-                }
-
-
-                if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXNeg][piece->getForm()[j].getY() + coord.getY() + checkYNeg] != 0) {
-                    if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXNeg][piece->getForm()[j].getY() + coord.getY() + checkYNeg]->getPlayer() == piece->getPlayer()) {
-                        isCorner = true;
-                    }
-
-                } else if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXPos][piece->getForm()[j].getY() + coord.getY() + checkYPos] != 0) {
-
-                    if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXPos][piece->getForm()[j].getY() + coord.getY() + checkYPos]->getPlayer() == piece->getPlayer()){
-                    isCorner = true;
-                }
-
-                }
-                else if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXPos][piece->getForm()[j].getY() + coord.getY() + checkYNeg] != 0) {
-                    if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXPos][piece->getForm()[j].getY() + coord.getY() + checkYNeg]->getPlayer() == piece->getPlayer()) {
-                        isCorner = true;
-                    }
-                } else if (pieceGrid[piece->getForm()[j].getX() + coord.getX() + checkXNeg][piece->getForm()[j].getY() + coord.getY() + checkYPos] != 0) {
-
-                    if (pieceGrid[piece->getForm()[j].getX() + coord.getX()+ checkXNeg][piece->getForm()[j].getY() + coord.getY() + checkYPos]->getPlayer() == piece->getPlayer()) {
-                        isCorner = true;
-
+    // check edges for my own pieces
+    for (Coordinate edge : std::vector<Coordinate> {
+            Coordinate(0, 1),
+            Coordinate(0, -1),
+            Coordinate(1, 0),
+            Coordinate(-1, 0)
+    }) {
+        for (Coordinate formCord : piece->getForm()) {
+            Coordinate borderingPosition = coord + formCord + edge;
+            if (borderingPosition.getX() < xTiles && borderingPosition.getX() > 0 &&
+                borderingPosition.getY() < yTiles && borderingPosition.getY() > 0) {
+                Piece* borderingPiece = pieceGrid[borderingPosition.getX()][borderingPosition.getY()];
+                if (borderingPiece != nullptr) {
+                    if (borderingPiece->getPlayer() == piece->getPlayer()) {
+                        return false;
                     }
                 }
             }
         }
     }
-    return isCorner;
+
+    // check corners for my own pieces
+    bool atLeastOneCornerIsMyOwn = false;
+    for (Coordinate corner : piece->getCornerForm()) {
+        Coordinate cornerPosition = coord + corner;
+        if (cornerPosition.getX() < xTiles && cornerPosition.getX() > 0 &&
+            cornerPosition.getY() < yTiles && cornerPosition.getY() > 0) {
+            Piece* cornerPiece = pieceGrid[cornerPosition.getX()][cornerPosition.getY()];
+            if (cornerPiece != nullptr) {
+                if (cornerPiece->getPlayer() == piece->getPlayer()) {
+                    atLeastOneCornerIsMyOwn = true;
+                    break;
+                }
+            }
+        }
+    }
+    if (!atLeastOneCornerIsMyOwn) {
+        return false;
+    }
+
+    return true;
 }
 
 void Board::nextPlayerTurn() {

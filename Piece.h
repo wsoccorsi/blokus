@@ -19,6 +19,7 @@ public:
     Piece(Blokus* blokus, std::vector<Coordinate> form, Player* player);
 
     std::vector<Coordinate> getForm() const;
+    std::vector<Coordinate> getCornerForm() const;
     std::vector<Tile *> getTiles();
     Player* getPlayer();
 

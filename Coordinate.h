@@ -2,6 +2,8 @@
 #define BLOKUS_COORDINATE_H
 
 
+#include <ostream>
+
 class Coordinate {
 public:
     Coordinate();
@@ -12,6 +14,14 @@ public:
 
     int getY() const;
     void setY(int y);
+
+    Coordinate operator+(const Coordinate& coord) const;
+
+    bool operator==(const Coordinate &rhs) const;
+
+    bool operator!=(const Coordinate &rhs) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Coordinate &coordinate);
 
 private:
     int x;

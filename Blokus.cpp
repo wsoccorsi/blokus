@@ -99,6 +99,10 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
 
+    for (Coordinate coord : currentPlayer->getTray()->getPieces()[0]->getCornerForm()) {
+        cout << coord << endl;
+    }
+    board->placePiece(currentPlayer->getTray()->getPieces()[0], Coordinate(3, 2));
 }
 
 /**

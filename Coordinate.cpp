@@ -48,3 +48,21 @@ int Coordinate::getY() const {
 void Coordinate::setY(int y) {
     Coordinate::y = y;
 }
+
+Coordinate Coordinate::operator+(const Coordinate& coord) const {
+    return Coordinate(this->getX() + coord.getX(), this->getY() + coord.getY());
+}
+
+bool Coordinate::operator==(const Coordinate &rhs) const {
+    return x == rhs.x &&
+           y == rhs.y;
+}
+
+bool Coordinate::operator!=(const Coordinate &rhs) const {
+    return !(rhs == *this);
+}
+
+std::ostream &operator<<(std::ostream &os, const Coordinate &coordinate) {
+    os << "x: " << coordinate.x << " y: " << coordinate.y;
+    return os;
+}
