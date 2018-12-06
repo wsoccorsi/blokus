@@ -2,6 +2,7 @@
 #include "Board.h"
 #include "Blokus.h"
 #include <iostream>
+#include "Player.h"
 using namespace std;
 
 /**
@@ -75,6 +76,17 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
         return false;
     }
 
+    Coordinate start = piece->getPlayer()->getStart();
+    if (pieceGrid[start.getX()][start.getY()] == nullptr) {
+        for (Coordinate formCoord : piece->getForm()) {
+            Coordinate position = coord + formCoord;
+            if (position == start) {
+                return true;
+            }
+        }
+    }
+
+
     // check edges for my own pieces
     for (Coordinate edge : std::vector<Coordinate> {
             Coordinate(0, 1),
@@ -100,8 +112,8 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     bool atLeastOneCornerIsMyOwn = false;
     for (Coordinate corner : piece->getCornerForm()) {
         Coordinate cornerPosition = coord + corner;
-        if (cornerPosition.getX() < xTiles && cornerPosition.getX() > 0 &&
-            cornerPosition.getY() < yTiles && cornerPosition.getY() > 0) {
+        if (cornerPosition.getX() < xTiles && cornerPosition.getX() >= 0 &&
+            cornerPosition.getY() < yTiles && cornerPosition.getY() >= 0) {
             Piece* cornerPiece = pieceGrid[cornerPosition.getX()][cornerPosition.getY()];
             if (cornerPiece != nullptr) {
                 if (cornerPiece->getPlayer() == piece->getPlayer()) {

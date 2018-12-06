@@ -7,11 +7,11 @@
  * @param title
  * @param trayCoord
  */
-Player::Player(Blokus* blokus, Color color, std::string title, Coordinate trayCoord, Board* board) {
+Player::Player(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start) {
     this->blokus = blokus;
     this->color = color;
-    this->title = title;
     this->board = board;
+    this->start = start;
 
     this->tray = new Tray(blokus, this, trayCoord.getX(), trayCoord.getY(), 20, 10);
     MainWindow::addDrawable(tray);
@@ -33,22 +33,6 @@ const Color &Player::getColor() const {
  */
 void Player::setColor(const Color &color) {
     Player::color = color;
-}
-
-/**
- *
- * @return
- */
-const std::string &Player::getTitle() const {
-    return title;
-}
-
-/**
- *
- * @param title
- */
-void Player::setTitle(const std::string &title) {
-    Player::title = title;
 }
 
 /**
@@ -88,4 +72,8 @@ std::vector<Player::PossibleMove> Player::getPossibleMoves() {
     }
 
     return possibleMoves;
+}
+
+const Coordinate &Player::getStart() const {
+    return start;
 }
