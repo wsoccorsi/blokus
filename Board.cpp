@@ -96,8 +96,8 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     }) {
         for (Coordinate formCord : piece->getForm()) {
             Coordinate borderingPosition = coord + formCord + edge;
-            if (borderingPosition.getX() < xTiles && borderingPosition.getX() > 0 &&
-                borderingPosition.getY() < yTiles && borderingPosition.getY() > 0) {
+            if (borderingPosition.getX() < xTiles && borderingPosition.getX() >= 0 &&
+                borderingPosition.getY() < yTiles && borderingPosition.getY() >= 0) {
                 Piece* borderingPiece = pieceGrid[borderingPosition.getX()][borderingPosition.getY()];
                 if (borderingPiece != nullptr) {
                     if (borderingPiece->getPlayer() == piece->getPlayer()) {
