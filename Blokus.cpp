@@ -85,8 +85,8 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     addDrawable(score4);
 
 
-    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(70, 240));
-    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(350, 25));
+    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), "player 1", Coordinate(70, 240), board);
+    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), "player 2", Coordinate(350, 25), board);
     Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), "computer 1", Coordinate(620, 240), board);
     Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), "computer 2", Coordinate(350, 460), board);
 
@@ -122,9 +122,17 @@ void Blokus::nextPlayerTurn() {
         indexPlayers = 0;
     }
     currentPlayer = players[indexPlayers];
+    if (currentPlayer->getPossibleMoves().empty()) {
+        endGame();
+        return;
+    }
     if (Computer* computer = dynamic_cast<Computer*>(currentPlayer)) {
         computer->takeTurn();
     }
+}
+
+void Blokus::endGame() {
+    std::cout << "end of game" << std::endl;
 }
 
 

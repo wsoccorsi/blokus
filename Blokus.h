@@ -14,7 +14,7 @@ public:
     Player *getCurrentPlayer() const;
     void nextPlayerTurn();
 
-
+    void endGame();
 
 protected:
     Board* board;
