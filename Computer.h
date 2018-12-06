@@ -17,7 +17,7 @@ public:
      void takeTurn();
 
 protected:
-    void animatePieceMove();
+    void animatePieceMove(Piece* piece, Coordinate to);
     PossibleMove getBestMove();
     int getMoveHeuristic(PossibleMove possibleMove);
 

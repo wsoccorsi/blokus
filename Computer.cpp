@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "Computer.h"
+#include "Blokus.h"
+#include <cstdlib>
 
 /**
  *
@@ -21,13 +23,34 @@ void Computer::takeTurn() {
     for (int i = 0; i < bestMove.rotation; i++) {
         bestMove.piece->rotateRight();
     }
-    board->placePiece(bestMove.piece, bestMove.position);
-    board->nextPlayerTurn();
+    animatePieceMove(bestMove.piece, bestMove.position);
 }
 
-void Computer::animatePieceMove() {
+void Computer::animatePieceMove(Piece* piece, Coordinate to) {
+    blokus->getEventListener().on(MainWindow::Event::ANIMATE, [=] {
+        Coordinate pieceScreenPos = Coordinate(piece->getX(), piece->getY());
+        Coordinate pieceCoordinate = board->screenPosToCoord(Coordinate(pieceScreenPos));
+        Coordinate toScreenPos = board->coordToScreenPos(Coordinate(to.getX(), to.getY()));
+        if (pieceCoordinate == to) {
+            board->placePiece(piece, to);
+            board->nextPlayerTurn();
+            return MainWindow::POP;
+        }
 
-    //glutTimerFunc(30, [=]{return 0;}, 0);
+        Coordinate difference = Coordinate(toScreenPos.getX() - pieceScreenPos.getX(), toScreenPos.getY() - pieceScreenPos.getY());
+        Coordinate offset = Coordinate(ceil(abs(difference.getX() / difference.getY())), ceil(abs(difference.getY() / difference.getX())));
+        if (difference.getX() < 0) {
+            offset.setX(offset.getX() * -1);
+        }
+        if (difference.getY() < 0) {
+            offset.setY(offset.getY() * -1);
+        }
+        Coordinate moveTo = Coordinate(offset.getX() + piece->getX(), offset.getY() + piece->getY());
+        piece->moveTo(moveTo);
+        MainWindow::render();
+        MainWindow::update();
+        return MainWindow::CONTINUE;
+    });
 }
 
 Player::PossibleMove Computer::getBestMove() {

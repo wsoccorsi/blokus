@@ -24,6 +24,8 @@ EventHandler MainWindow::eventHandler = EventHandler();
 std::vector<std::vector<Drawable*>> MainWindow::drawables = std::vector<std::vector<Drawable*>>();
 std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::vector<Clickable*>>();
 
+bool MainWindow::animating = false;
+
 /**
  *
  * @param title
@@ -50,6 +52,7 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
     glutPassiveMotionFunc(onMouseMove);
     glutSpecialFunc(onSpecialKeyDown);
     glutDisplayFunc(render);
+    glutTimerFunc(30, timer, 0);
 }
 
 /**
@@ -140,6 +143,12 @@ void MainWindow::onMouseMove(int x, int y) {
     mouseX = x;
     mouseY = y;
     eventHandler.fire(Event::MOUSE_MOVE);
+}
+
+void MainWindow::timer(int extra) {
+    eventHandler.fire(Event::ANIMATE);
+    update();
+    glutTimerFunc(30, timer, 0);
 }
 
 /**

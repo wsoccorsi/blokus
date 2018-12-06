@@ -17,7 +17,8 @@ public:
         KEY_LEFT,
         KEY_UP,
         KEY_RIGHT,
-        KEY_F2
+        KEY_F2,
+        ANIMATE
     };
 
     explicit MainWindow(std::string title, int width=500, int height=500);
@@ -28,6 +29,7 @@ public:
     static void addClickable(Clickable* clickable);
 
     static void update();
+    static void render();
 
     static EventHandler& getEventListener();
 
@@ -47,11 +49,13 @@ protected:
     static std::vector<std::vector<Drawable*>> drawables; // z index : drawables
     static std::vector<std::vector<Clickable*>> clickables;
 
-    static void render();
+    static bool animating;
+
     static void onResize(int width, int height);
     static void onClick(int button, int state, int x, int y);
     static void onSpecialKeyDown(int key, int x, int y);
     static void onMouseMove(int x, int y);
+    static void timer(int extra);
 
 };
 
