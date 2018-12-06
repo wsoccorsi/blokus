@@ -38,6 +38,12 @@ void Computer::animatePieceMove(Piece* piece, Coordinate to) {
         }
 
         Coordinate difference = Coordinate(toScreenPos.getX() - pieceScreenPos.getX(), toScreenPos.getY() - pieceScreenPos.getY());
+        if (difference.getX() == 0) {
+            difference.setX(1);
+        }
+        if (difference.getY() == 0) {
+            difference.setY(1);
+        }
         Coordinate offset = Coordinate(ceil(abs(difference.getX() / difference.getY())), ceil(abs(difference.getY() / difference.getX())));
         if (difference.getX() < 0) {
             offset.setX(offset.getX() * -1);
