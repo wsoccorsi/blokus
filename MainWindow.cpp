@@ -9,10 +9,7 @@
 
 #include "Coordinate.h"
 
-/**
- *
- */
-std::string MainWindow::title = "";
+tring MainWindow::title = "";
 int MainWindow::width = 0;
 int MainWindow::height = 0;
 
@@ -27,6 +24,7 @@ std::vector<std::vector<Clickable*>> MainWindow::clickables = std::vector<std::v
 bool MainWindow::animating = false;
 
 /**
+ * Main window constructor
  *
  * @param title
  * @param width
@@ -56,7 +54,7 @@ MainWindow::MainWindow(std::string title, int width, int height) : EventHandler(
 }
 
 /**
- *
+ *  add vector of drawables
  * @param drawable
  */
 void MainWindow::addDrawable(Drawable* drawable) {
@@ -68,6 +66,7 @@ void MainWindow::addDrawable(Drawable* drawable) {
 }
 
 /**
+ * updates drawables
  *
  */
 void MainWindow::updateDrawables() {
@@ -83,6 +82,7 @@ void MainWindow::updateDrawables() {
     update();
 }
 /**
+ * adds clickable to main window
  *
  * @param clickable
  */
@@ -94,6 +94,7 @@ void MainWindow::addClickable(Clickable* clickable) {
 }
 
 /**
+ * updates main window
  *
  */
 void MainWindow::update() {
@@ -101,6 +102,7 @@ void MainWindow::update() {
 }
 
 /**
+ * changes with resize of window
  *
  * @param width
  * @param height
@@ -113,6 +115,7 @@ void MainWindow::onResize(int width, int height) {
 }
 
 /**
+ * onCLick for main window return if it is inbounds so if it is clickable
  *
  * @param button
  * @param state
@@ -135,6 +138,7 @@ void MainWindow::onClick(int button, int state, int x, int y) {
 }
 
 /**
+ * moves pieve with mouse
  *
  * @param x
  * @param y
@@ -145,6 +149,11 @@ void MainWindow::onMouseMove(int x, int y) {
     eventHandler.fire(Event::MOUSE_MOVE);
 }
 
+/**
+ *  timer for animation
+ *
+ * @param extra
+ */
 void MainWindow::timer(int extra) {
     eventHandler.fire(Event::ANIMATE);
     update();
@@ -152,6 +161,7 @@ void MainWindow::timer(int extra) {
 }
 
 /**
+ * handles onSpecialKey Down
  *
  * @param key
  * @param x
@@ -178,6 +188,7 @@ void MainWindow::onSpecialKeyDown(int key, int x, int y) {
 }
 
 /**
+ * calls everytime the game renders
  *
  */
 void MainWindow::render() {

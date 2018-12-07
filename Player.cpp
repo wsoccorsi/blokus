@@ -1,6 +1,7 @@
 #include "Player.h"
 
 /**
+ * Player constructor that sets blokus, color, board, start, tray, scoreboard
  *
  * @param blokus
  * @param color
@@ -21,6 +22,7 @@ Player::Player(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, 
 }
 
 /**
+ * getter for color
  *
  * @return
  */
@@ -29,6 +31,7 @@ const Color &Player::getColor() const {
 }
 
 /**
+ * setter for color
  *
  * @param color
  */
@@ -37,6 +40,7 @@ void Player::setColor(const Color &color) {
 }
 
 /**
+ * getter for tray
  *
  * @return
  */
@@ -45,6 +49,7 @@ Tray *Player::getTray() const {
 }
 
 /**
+ * stter for tray
  *
  * @param tray
  */
@@ -52,6 +57,11 @@ void Player::setTray(Tray *tray) {
     Player::tray = tray;
 }
 
+/**
+ * getter for all possible moves
+ *
+ * @return
+ */
 std::vector<Player::PossibleMove> Player::getPossibleMoves() {
     std::vector<Player::PossibleMove> possibleMoves = std::vector<Player::PossibleMove>();
     for (int x = 0; x < board->getXTiles(); x++) {
@@ -75,14 +85,29 @@ std::vector<Player::PossibleMove> Player::getPossibleMoves() {
     return possibleMoves;
 }
 
+/**
+ * getter for start
+ *
+ * @return
+ */
 const Coordinate &Player::getStart() const {
     return start;
 }
 
+/**
+ * getter for score
+ *
+ * @return
+ */
 int Player::getScore() const {
     return this->scoreboard->getScore();
 }
 
+/**
+ * setter for score
+ *
+ * @param score
+ */
 void Player::setScore(int score){
     this->scoreboard->setScore(score);
 }

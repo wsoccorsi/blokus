@@ -5,6 +5,7 @@
 TileGrid::TileGrid() {}
 
 /**
+ * Constructor for tile grid, sets xTiles, yTiles, tiles, pieceGrid, pieces
  *
  * @param x
  * @param y
@@ -48,6 +49,7 @@ TileGrid::TileGrid(int x, int y, int x_tiles, int y_tiles): Drawable(x, y, 1) {
 }
 
 /**
+ * draws tile grid
  *
  * @param width
  * @param height
@@ -62,6 +64,7 @@ void TileGrid::draw(int width, int height) {
 }
 
 /**
+ * adjusts tile grid to screen coords
  *
  * @param coord
  * @return
@@ -75,6 +78,7 @@ Coordinate TileGrid::screenPosToCoord(Coordinate coord) {
 }
 
 /**
+ * moves tile grid to screen position
  *
  * @param coord
  * @return
@@ -97,6 +101,7 @@ Tile* TileGrid::screenPosToTile(Coordinate coord) {
 }
 
 /**
+ * checks to see if a piece is within bounds
  *
  * @param piece
  * @param coord
@@ -117,6 +122,7 @@ bool TileGrid::pieceIsWithinBounds(Piece *piece, Coordinate coord) {
 }
 
 /**
+ * checks to see if a piece overlaps another piece
  *
  * @param piece
  * @param coord
@@ -132,6 +138,7 @@ bool TileGrid::pieceOverlaps(Piece *piece, Coordinate coord) {
 }
 
 /**
+ * places piece
  *
  * @param piece
  * @param coord
@@ -148,6 +155,7 @@ void TileGrid::placePiece(Piece* piece, Coordinate coord) {
 }
 
 /**
+ * removes a piece
  *
  * @param piece
  */
@@ -167,6 +175,7 @@ void TileGrid::removePiece(Piece *piece) {
 }
 
 /**
+ * getter for pieces
  *
  * @return
  */
@@ -174,10 +183,20 @@ std::vector<Piece*> TileGrid::getPieces() const {
     return pieces;
 }
 
+/**
+ * getter for XTiles
+ *
+ * @return
+ */
 int TileGrid::getXTiles() const {
     return xTiles;
 }
 
+/**
+ * getter for YTiles
+ *
+ * @return
+ */
 int TileGrid::getYTiles() const {
     return yTiles;
 }

@@ -1,6 +1,10 @@
 #include "Scoreboard.h"
 #include "MainWindow.h"
 
+/**
+ * Constructor for scoreboard sets score
+ *
+ */
 Scoreboard::Scoreboard(): Drawable(0, 0, 0) {
     this->score = 0;
 }
@@ -9,11 +13,22 @@ Scoreboard::Scoreboard(int x, int y): Drawable(x, y, 2) {
     this->score = 0;
 }
 
+/**
+ * setter for score
+ *
+ * @param score
+ */
 void Scoreboard::setScore(int score) {
     this->score = score;
     MainWindow::updateDrawables();
 }
 
+/**
+ * draws score
+ *
+ * @param width
+ * @param height
+ */
 void Scoreboard::draw(int width, int height) {
     Drawable::draw(width, height);
     std::string message = "Score: " + std::to_string(this->score);
@@ -24,6 +39,11 @@ void Scoreboard::draw(int width, int height) {
     }
 }
 
+/**
+ * getter for score
+ *
+ * @return
+ */
 int Scoreboard::getScore() const {
     return score;
 }

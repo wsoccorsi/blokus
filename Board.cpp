@@ -43,6 +43,7 @@ Board::Board(Blokus* blokus, int x, int y): TileGrid(x, y, 20, 20) {
 
 
 /**
+ *  Checks to see if a piece boarders its own edge
  *
  * @param piece
  * @param coord
@@ -54,6 +55,7 @@ bool Board::doesBorderOwnEdge(Piece *piece, Coordinate coord) {
 }
 
 /**
+ *  Checks to see if corners touch
  *
  * @param piece
  * @param coord
@@ -63,6 +65,7 @@ bool Board::cornersDoTouch(Piece *piece, Coordinate coord) {
     return false;
 }
 /**
+ *  checks to see if the move is valid for the gameplay
  *
  * @param piece
  * @param coord
@@ -131,12 +134,22 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     return true;
 }
 
+
+/**
+ *  method to place a piece
+ *
+ * @param piece
+ * @param coord
+ */
 void Board::placePiece(Piece *piece, Coordinate coord) {
     TileGrid::placePiece(piece, coord);
     piece->getPlayer()->setScore(piece->getForm().size() + piece->getPlayer()->getScore());
-    cout << piece->getPlayer()->getScore() << endl;
 }
 
+/*
+ *  Gets the next players turn
+ *
+ */
 void Board::nextPlayerTurn() {
     blokus->nextPlayerTurn();
 }

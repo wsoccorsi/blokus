@@ -1,6 +1,7 @@
 #include "Clickable.h"
 
 /**
+ *  Clickable constructor
  *
  */
 Clickable::Clickable() {
@@ -8,6 +9,7 @@ Clickable::Clickable() {
 }
 
 /**
+ *  declares click priority
  *
  * @param clickPriority
  */
@@ -24,6 +26,7 @@ void Clickable::onClick(Coordinate coord) {
 }
 
 /**
+ *  Checks if it in bounds
  *
  * @param coord
  * @return
@@ -33,6 +36,7 @@ bool Clickable::isInBounds(Coordinate coord) {
 }
 
 /**
+ *  Click priority getter
  *
  * @return
  */
@@ -41,6 +45,7 @@ int Clickable::getClickPriority() {
 }
 
 /**
+ * click priority setter
  *
  * @param clickPriority
  */

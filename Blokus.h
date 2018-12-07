@@ -5,6 +5,7 @@
 #include "TileGrid.h"
 #include "EventHandler.h"
 #include "Board.h"
+#include "Scoreboard.h"
 
 class Blokus: public MainWindow {
 public:

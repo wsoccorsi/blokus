@@ -1,6 +1,7 @@
 #include "Drawable.h"
 
 /**
+ * Constructor for Drawable
  *
  */
 Drawable::Drawable() {
@@ -8,6 +9,7 @@ Drawable::Drawable() {
 }
 
 /**
+ * sets x, y, and z
  *
  * @param x
  * @param y
@@ -20,6 +22,7 @@ Drawable::Drawable(int x, int y, int z) {
 }
 
 /**
+ * draw method that take width and height
  *
  * @param width
  * @param height
@@ -29,6 +32,7 @@ void Drawable::draw(int width, int height) {
 }
 
 /**
+ * getter for x
  *
  * @return
  */
@@ -37,6 +41,7 @@ int Drawable::getX() const {
 }
 
 /**
+ * setter for x
  *
  * @param x
  */
@@ -45,6 +50,7 @@ void Drawable::setX(int x) {
 }
 
 /**
+ * getter for y
  *
  * @return
  */
@@ -53,6 +59,7 @@ int Drawable::getY() const {
 }
 
 /**
+ * setter for y
  *
  * @param y
  */
@@ -61,6 +68,7 @@ void Drawable::setY(int y) {
 }
 
 /**
+ * getter for z
  *
  * @return
  */
@@ -69,6 +77,7 @@ int Drawable::getZ() const {
 }
 
 /**
+ * setter for z
  *
  * @param z
  */

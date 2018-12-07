@@ -4,6 +4,7 @@ GLdouble width, height;
 int wd;
 
 /**
+ * init for graphics
  *
  */
 void init() {
@@ -54,6 +55,13 @@ void kbd(unsigned char key, int x, int y)
     return;
 }
 
+/**
+ * sitch case for key function
+ *
+ * @param key
+ * @param x
+ * @param y
+ */
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:

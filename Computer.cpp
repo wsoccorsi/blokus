@@ -8,6 +8,7 @@
 #include <cstdlib>
 
 /**
+ * Computer constructor
  *
  * @param blokus
  * @param color
@@ -17,6 +18,10 @@
 Computer::Computer(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start) : Player(blokus, color, trayCoord, board, start) {
 }
 
+/**
+ * Computer take turn method to find best move as well
+ *
+ */
 void Computer::takeTurn() {
     PossibleMove bestMove = getBestMove();
     tray->removePiece(bestMove.piece);
@@ -26,6 +31,12 @@ void Computer::takeTurn() {
     animatePieceMove(bestMove.piece, bestMove.position);
 }
 
+/**
+ *  to animate the piece movement
+ *
+ * @param piece
+ * @param to
+ */
 void Computer::animatePieceMove(Piece* piece, Coordinate to) {
     piece->setZ(15);
     MainWindow::updateDrawables();
@@ -63,6 +74,11 @@ void Computer::animatePieceMove(Piece* piece, Coordinate to) {
     });
 }
 
+/**
+ * getter for best move
+ *
+ * @return
+ */
 Player::PossibleMove Computer::getBestMove() {
     std::vector<PossibleMove> bestMoves = std::vector<PossibleMove>();
     for (PossibleMove possibleMove : getPossibleMoves()) {
@@ -77,6 +93,12 @@ Player::PossibleMove Computer::getBestMove() {
     return bestMoves[0];
 }
 
+/**
+ * getter for move heuristic
+ *
+ * @param possibleMove
+ * @return
+ */
 int Computer::getMoveHeuristic(Player::PossibleMove possibleMove) {
     int heuristic = 0;
     heuristic += possibleMove.piece->getTiles().size();

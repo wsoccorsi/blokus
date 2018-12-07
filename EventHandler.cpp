@@ -2,6 +2,7 @@
 #include "EventHandler.h"
 
 /**
+ * Constructor for Event Handler
  *
  */
 EventHandler::EventHandler() {
@@ -10,6 +11,7 @@ EventHandler::EventHandler() {
 }
 
 /**
+ *
  *
  * @param event
  * @param callback
