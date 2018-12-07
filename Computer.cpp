@@ -64,14 +64,17 @@ void Computer::animatePieceMove(Piece* piece, Coordinate to) {
 }
 
 Player::PossibleMove Computer::getBestMove() {
-    PossibleMove bestMove = PossibleMove();
+    std::vector<PossibleMove> bestMoves = std::vector<PossibleMove>();
     for (PossibleMove possibleMove : getPossibleMoves()) {
         possibleMove.score = getMoveHeuristic(possibleMove);
-        if (possibleMove.score > bestMove.score) {
-            bestMove = possibleMove;
+        if (bestMoves.empty()) {
+            bestMoves.push_back(possibleMove);
+        } else if (possibleMove.score > bestMoves[0].score) {
+            bestMoves.push_back(possibleMove);
         }
     }
-    return bestMove;
+    std::random_shuffle(bestMoves.begin(), bestMoves.end());
+    return bestMoves[0];
 }
 
 int Computer::getMoveHeuristic(Player::PossibleMove possibleMove) {
