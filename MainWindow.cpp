@@ -9,7 +9,7 @@
 
 #include "Coordinate.h"
 
-tring MainWindow::title = "";
+std::string MainWindow::title = "";
 int MainWindow::width = 0;
 int MainWindow::height = 0;
 

@@ -27,7 +27,7 @@ file(GLOB SOURCE_FILES
         )
 
 
-add_executable(main.cpp ${SOURCE_FILES} Color.cpp Color.h Computer.cpp Computer.h Scoreboard.cpp Scoreboard.h)
+add_executable(main.cpp ${SOURCE_FILES} Color.cpp Color.h Computer.cpp Computer.h Scoreboard.cpp Scoreboard.h BlokusTitles.cpp BlokusTitles.h)
 
 if (WIN32)
     target_link_libraries (main.cpp ${OPENGL_LIBRARIES} freeglut)
