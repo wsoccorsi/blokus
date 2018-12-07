@@ -86,8 +86,12 @@ Player::PossibleMove Computer::getBestMove() {
         if (bestMoves.empty()) {
             bestMoves.push_back(possibleMove);
         } else if (possibleMove.score > bestMoves[0].score) {
+            bestMoves.clear();
+            bestMoves.push_back(possibleMove);
+        } else if (possibleMove.score == bestMoves[0].score) {
             bestMoves.push_back(possibleMove);
         }
+
     }
     std::random_shuffle(bestMoves.begin(), bestMoves.end());
     return bestMoves[0];
