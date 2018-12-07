@@ -46,7 +46,7 @@ protected:
     Color color;
     Board* board;
     Coordinate start;
-    int score;
+    int score = 0;
 
     Tray* tray;
 

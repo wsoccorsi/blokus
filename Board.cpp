@@ -133,7 +133,8 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
 
 void Board::placePiece(Piece *piece, Coordinate coord) {
     TileGrid::placePiece(piece, coord);
-    std::cout << "place piece" << std::endl;
+    piece->getPlayer()->setScore(piece->getForm().size() + piece->getPlayer()->getScore());
+    cout << piece->getPlayer()->getScore() << endl;
 }
 
 void Board::nextPlayerTurn() {
