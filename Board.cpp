@@ -131,6 +131,11 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
     return true;
 }
 
+void Board::placePiece(Piece *piece, Coordinate coord) {
+    TileGrid::placePiece(piece, coord);
+    std::cout << "place piece" << std::endl;
+}
+
 void Board::nextPlayerTurn() {
     blokus->nextPlayerTurn();
 }

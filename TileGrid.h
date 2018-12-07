@@ -24,7 +24,7 @@ public:
     bool pieceIsWithinBounds(Piece* piece, Coordinate coord);
     bool pieceOverlaps(Piece* piece, Coordinate coord);
 
-    void placePiece(Piece* piece, Coordinate coord);
+    virtual void placePiece(Piece* piece, Coordinate coord);
     void removePiece(Piece* piece);
 
     std::vector<Piece*> getPieces() const;

@@ -19,6 +19,8 @@ public:
     bool cornersDoTouch(Piece* piece, Coordinate coord);
     bool isValidMove(Piece *piece, Coordinate coord) override;
 
+    void placePiece(Piece *piece, Coordinate coord) override;
+
     void nextPlayerTurn();
 
 
