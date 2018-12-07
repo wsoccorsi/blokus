@@ -5,6 +5,7 @@
 #include "TileGrid.h"
 #include "EventHandler.h"
 #include "Board.h"
+#include "BlokusTitles.h"
 
 class Blokus: public MainWindow {
 public:
@@ -21,6 +22,8 @@ protected:
     Player* currentPlayer;
     std::vector<Player* > players;
     int indexPlayers;
+    BlokusTitles* blokusTitles;
+
 };
 
 

@@ -70,19 +70,19 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     board = new Board(this, 350, 180);
     addDrawable(board);
 
-    Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0));
-    Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0));
-    Computer* computer1  = new Computer(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19));
-    Computer* computer2 = new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19));
-
-    players.push_back(player1);
-    players.push_back(player2);
-    players.push_back(computer1);
-    players.push_back(computer2);
-
+    players = std::vector<Player*> {
+        new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0)),
+        new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0)),
+        new Player(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19)),
+        new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19))
+    };
 
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
+
+    blokusTitles = new BlokusTitles();
+    addDrawable(blokusTitles);
+
 }
 
 /**
