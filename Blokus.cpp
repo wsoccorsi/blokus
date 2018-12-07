@@ -71,10 +71,10 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     addDrawable(board);
 
     players = std::vector<Player*> {
-        new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0)),
-        new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0)),
-        new Player(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19)),
-        new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19))
+        new Computer(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0), "red"),
+        new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0), "blue"),
+        new Computer(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19), "green"),
+        new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19), "yellow")
     };
 
     indexPlayers = 0;
@@ -82,6 +82,8 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     blokusTitles = new BlokusTitles();
     addDrawable(blokusTitles);
+
+    endGame();
 
 }
 
@@ -116,7 +118,13 @@ void Blokus::nextPlayerTurn() {
 }
 
 void Blokus::endGame() {
-    std::cout << "end of game" << std::endl;
+    Player* winner = players[0];
+    for (int i = 1; i < players.size(); i++) {
+        if (players[i]->getScore() > winner->getScore()) {
+            winner = players[i];
+        }
+    }
+    this->blokusTitles->endGame(winner);
 }
 
 

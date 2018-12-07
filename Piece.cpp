@@ -118,7 +118,6 @@ void Piece::moveTo(Coordinate coord) {
  */
 void Piece::onClick(Coordinate coord) {
     Clickable::onClick(coord);
-    std::cout << "piece clicked" << std::endl;
 
     if (blokus->clickedPiece == nullptr && blokus->getCurrentPlayer() == player) {
         blokus->clickedPiece = this;

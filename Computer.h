@@ -12,7 +12,7 @@
 class Computer : public Player {
 
 public:
-     Computer(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start);
+     Computer(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start, std::string title);
 
      void takeTurn();
 

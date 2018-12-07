@@ -7,11 +7,12 @@
  * @param title
  * @param trayCoord
  */
-Player::Player(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start) {
+Player::Player(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start, std::string title) {
     this->blokus = blokus;
     this->color = color;
     this->board = board;
     this->start = start;
+    this->title = title;
 
     this->tray = new Tray(blokus, this, trayCoord.getX(), trayCoord.getY(), 20, 10);
     MainWindow::addDrawable(tray);
@@ -85,4 +86,12 @@ int Player::getScore() const {
 
 void Player::setScore(int score){
     this->scoreboard->setScore(score);
+}
+
+const std::string &Player::getTitle() const {
+    return title;
+}
+
+void Player::setTitle(const std::string &title) {
+    Player::title = title;
 }

@@ -1,8 +1,8 @@
 #include <string>
 #include "BlokusTitles.h"
 
-BlokusTitles::BlokusTitles() {
-
+BlokusTitles::BlokusTitles(): Drawable(0, 0, 2) {
+    this->winner = nullptr;
 }
 
 void BlokusTitles::draw(int width, int height) {
@@ -30,4 +30,22 @@ void BlokusTitles::draw(int width, int height) {
     for (int i = 0; i < helpText.length(); ++ i) {
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15, helpText[i]);
     }
+    if (winner != nullptr) {
+        std::string winText = winner->getTitle() + " won the game! incredible!";
+        glColor3f(1,1,1);
+        glRasterPos2i(10,70);
+        for (int i = 0; i < winText.length(); ++ i) {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, winText[i]);
+        }
+        glColor3f(0,0,0);
+        glRasterPos2i(12,72);
+        for (int i = 0; i < winText.length(); ++ i) {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, winText[i]);
+        }
+    }
+}
+
+void BlokusTitles::endGame(Player* winner) {
+    this->winner = winner;
+    MainWindow::updateDrawables();
 }

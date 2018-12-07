@@ -14,7 +14,7 @@
  * @param title
  * @param trayCoord
  */
-Computer::Computer(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start) : Player(blokus, color, trayCoord, board, start) {
+Computer::Computer(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, Coordinate start, std::string title) : Player(blokus, color, trayCoord, board, start, title) {
 }
 
 void Computer::takeTurn() {
