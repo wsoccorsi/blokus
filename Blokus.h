@@ -10,7 +10,7 @@
 
 class Blokus: public MainWindow {
 public:
-    explicit Blokus(int width=960, int height=600);
+    explicit Blokus(int width=960, int height=600, int computerPlayersCount=2);
     Piece* clickedPiece;
 
     Player *getCurrentPlayer() const;

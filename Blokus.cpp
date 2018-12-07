@@ -11,7 +11,7 @@ using namespace std;
  * @param width
  * @param height
  */
-Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
+Blokus::Blokus(int width, int height, int computerPlayersCount): MainWindow("Blokus", width, height) {
     this->clickedPiece = nullptr;
 
     getEventListener().on(MainWindow::Event::KEY_UP, [=] {
@@ -70,19 +70,34 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
     board = new Board(this, 350, 180);
     addDrawable(board);
 
-    players = std::vector<Player*> {
-        new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0), "red"),
-        new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0), "blue"),
-        new Player(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19), "green"),
-        new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19), "yellow")
-    };
+
+    if (computerPlayersCount == 4) {
+        players = std::vector<Player*> {
+                new Computer(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0), "red"),
+                new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0), "blue"),
+                new Computer(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19), "green"),
+                new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19), "yellow")
+        };
+    } else {
+        players = std::vector<Player*> {
+                new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0), "red"),
+                new Computer(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0), "blue"),
+                new Player(this, Color(0.05, 0.47, 0.25), Coordinate(620, 240), board, Coordinate(19, 19), "green"),
+                new Computer(this, Color(0.90, 0.80, 0.29), Coordinate(350, 460), board, Coordinate(0, 19), "yellow")
+        };
+    }
+
 
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
 
     blokusTitles = new BlokusTitles();
     addDrawable(blokusTitles);
-    
+
+    if (Computer* computer = dynamic_cast<Computer*>(currentPlayer)) {
+        computer->takeTurn();
+    }
+
 }
 
 /**

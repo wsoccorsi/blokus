@@ -30,7 +30,11 @@ int main(int argc, char** argv) {
 
     glutInit(&argc, argv);
 
-    Blokus* blokus = new Blokus();
+    int computerPlayersCount = 2;
+    if (argc > 1) {
+        computerPlayersCount = std::stoi(argv[1]);
+    }
+    Blokus* blokus = new Blokus(960, 600, computerPlayersCount);
 
     glutMainLoop();
 }
