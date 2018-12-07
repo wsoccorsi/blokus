@@ -127,6 +127,7 @@ bool Board::isValidMove(Piece* piece, Coordinate coord) {
         return false;
     }
 
+
     return true;
 }
 

@@ -38,12 +38,15 @@ public:
     virtual Tray *getTray() const;
     virtual void setTray(Tray *tray);
     virtual const Coordinate &getStart() const;
+    virtual int getScore() const;
+    virtual void setScore(int score);
 
 protected:
     Blokus* blokus;
     Color color;
     Board* board;
     Coordinate start;
+    int score;
 
     Tray* tray;
 

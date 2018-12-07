@@ -77,3 +77,11 @@ std::vector<Player::PossibleMove> Player::getPossibleMoves() {
 const Coordinate &Player::getStart() const {
     return start;
 }
+
+int Player::getScore() const {
+    return score;
+}
+
+void Player::setScore(int s){
+    score = s;
+}
