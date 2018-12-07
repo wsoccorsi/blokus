@@ -26,6 +26,7 @@ public:
 
 protected:
     Blokus* blokus;
+    int pieceNum;
 };
 
 

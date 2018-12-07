@@ -2,6 +2,7 @@
 #include "Blokus.h"
 
 /**
+ * Constructor for Tray
  *
  * @param blokus
  * @param player
@@ -34,6 +35,7 @@ Tray::Tray(Blokus* blokus, Player* player, int x, int y, int tiles_x, int tiles_
 }
 
 /**
+ * creates pieces
  *
  */
 void Tray::createPieces() {
@@ -220,6 +222,7 @@ void Tray::createPieces() {
 }
 
 /**
+ * checks to see if it is a valid move for the piece
  *
  * @param piece
  * @param coord

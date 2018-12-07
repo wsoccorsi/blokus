@@ -1,6 +1,7 @@
 #include "Color.h"
 
 /**
+ * Constructor for color
  *
  */
 Color::Color() {
@@ -10,6 +11,7 @@ Color::Color() {
 }
 
 /**
+ * Declares R, G, B for coler
  *
  * @param r
  * @param g
@@ -22,7 +24,7 @@ Color::Color(float r, float g, float b) {
 }
 
 /**
- *
+ *  R getter
  * @return
  */
 float Color::getR() const {
@@ -30,7 +32,7 @@ float Color::getR() const {
 }
 
 /**
- *
+ * R setter
  * @param r
  */
 void Color::setR(float r) {
@@ -38,7 +40,7 @@ void Color::setR(float r) {
 }
 
 /**
- *
+ * G Getter
  * @return
  */
 float Color::getG() const {
@@ -46,7 +48,7 @@ float Color::getG() const {
 }
 
 /**
- *
+ * G setter
  * @param g
  */
 void Color::setG(float g) {
@@ -54,7 +56,7 @@ void Color::setG(float g) {
 }
 
 /**
- *
+ * B getter
  * @return
  */
 float Color::getB() const {
@@ -62,7 +64,7 @@ float Color::getB() const {
 }
 
 /**
- *
+ * B setter
  * @param b
  */
 void Color::setB(float b) {

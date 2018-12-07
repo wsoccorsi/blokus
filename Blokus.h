@@ -6,6 +6,7 @@
 #include "EventHandler.h"
 #include "Board.h"
 #include "BlokusTitles.h"
+#include "Scoreboard.h"
 
 class Blokus: public MainWindow {
 public:
@@ -20,7 +21,7 @@ public:
 protected:
     Board* board;
     Player* currentPlayer;
-    std::vector<Player* > players;
+    std::vector<Player*> players;
     int indexPlayers;
     BlokusTitles* blokusTitles;
 

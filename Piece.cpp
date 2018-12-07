@@ -3,14 +3,13 @@
 #include "Blokus.h"
 #include "Player.h"
 
-/**
- *
- */
+
 Piece::Piece() {
 
 }
 
 /**
+ * Piece constructor to set blokus, form, player, x, y and tiles
  *
  * @param blokus
  * @param form
@@ -47,6 +46,7 @@ Piece::Piece(Blokus *blokus, std::vector<Coordinate> form, Player* player): Piec
 
 
 /**
+ * draws piece
  *
  * @param width
  * @param height
@@ -59,6 +59,7 @@ void Piece::draw(int width, int height) {
 }
 
 /**
+ * rotates piece left
  *
  */
 void Piece::rotateLeft() {
@@ -75,6 +76,7 @@ void Piece::rotateLeft() {
 }
 
 /**
+ * rotates piece Right
  *
  */
 void Piece::rotateRight() {
@@ -90,6 +92,7 @@ void Piece::rotateRight() {
 }
 
 /**
+ * Flips Piece
  *
  */
 void Piece::flip() {
@@ -102,6 +105,7 @@ void Piece::flip() {
 }
 
 /**
+ * moves piece to certain coord
  *
  * @param coord
  */
@@ -113,6 +117,7 @@ void Piece::moveTo(Coordinate coord) {
 }
 
 /**
+ * onClick for the piece that impletements movement and placement
  *
  * @param coord
  */
@@ -139,6 +144,7 @@ void Piece::onClick(Coordinate coord) {
 }
 
 /**
+ * Checks in the piece is in bounds
  *
  * @param coord
  * @return
@@ -156,6 +162,7 @@ bool Piece::isInBounds(Coordinate coord) {
 }
 
 /**
+ * updates tile where piece is placed
  *
  */
 void Piece::updateTiles() {
@@ -167,6 +174,7 @@ void Piece::updateTiles() {
 }
 
 /**
+ * getter for form = vector of tiles for a piece
  *
  * @return
  */
@@ -174,6 +182,11 @@ std::vector<Coordinate> Piece::getForm() const{
     return form;
 }
 
+/**
+ * makes sure u can only place a piece on the corner of your piece
+ *
+ * @return
+ */
 std::vector<Coordinate> Piece::getCornerForm() const {
     std::vector<Coordinate> cornerForm = std::vector<Coordinate>();
     for (Coordinate formCoord : form) {
@@ -214,6 +227,7 @@ std::vector<Coordinate> Piece::getCornerForm() const {
 }
 
 /**
+ * getter for tiles
  *
  * @return
  */
@@ -222,6 +236,7 @@ std::vector<Tile *> Piece::getTiles()  {
 }
 
 /**
+ * getter for plater
  *
  * @return
  */
@@ -229,10 +244,20 @@ Player *Piece::getPlayer() {
     return this->player;
 }
 
+/**
+ * getter for tile grid
+ *
+ * @return
+ */
 TileGrid *Piece::getTileGrid() const {
     return tileGrid;
 }
 
+/**
+ * setter for tile grid
+ *
+ * @param tileGrid
+ */
 void Piece::setTileGrid(TileGrid *tileGrid) {
     Piece::tileGrid = tileGrid;
 }

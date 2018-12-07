@@ -1,6 +1,7 @@
 #include "Tile.h"
 
 /**
+ * sets color and inheirits drawable
  *
  * @param x
  * @param y
@@ -18,6 +19,7 @@ void Tile::setColor(Color color) {
 }
 
 /**
+ * draws the tiles
  *
  * @param width
  * @param height
@@ -32,6 +34,7 @@ void Tile::draw(int width, int height) {
 }
 
 /**
+ * on click for tiles
  *
  * @param coord
  */
@@ -41,6 +44,7 @@ void Tile::onClick(Coordinate coord) {
 }
 
 /**
+ * check to see if the tiels are the right size
  *
  * @param coord
  * @return
@@ -51,6 +55,7 @@ bool Tile::isInBounds(Coordinate coord) {
 }
 
 /**
+ * setter for on click
  *
  * @param callback
  */
