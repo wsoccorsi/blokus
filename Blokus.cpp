@@ -79,6 +79,10 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     indexPlayers = 0;
     currentPlayer = players[indexPlayers];
+
+    blokusTitles = new BlokusTitles();
+    addDrawable(blokusTitles);
+    
 }
 
 /**
