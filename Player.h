@@ -20,15 +20,17 @@ public:
             this->rotation = 0;
             this->score = 0;
         }
-        PossibleMove(Piece* piece, Coordinate position, int rotation) {
+        PossibleMove(Piece* piece, Coordinate position, int rotation, std::vector<Coordinate> cornerForm) {
             this->piece = piece;
             this->position = position;
             this->rotation = rotation;
+            this->cornerForm = cornerForm;
             this->score = 0;
         }
         Piece* piece;
         Coordinate position;
         int rotation;
+        std::vector<Coordinate> cornerForm;
         int score;
     };
 

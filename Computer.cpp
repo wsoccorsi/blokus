@@ -101,6 +101,43 @@ Player::PossibleMove Computer::getBestMove() {
  */
 int Computer::getMoveHeuristic(Player::PossibleMove possibleMove) {
     int heuristic = 0;
-    heuristic += possibleMove.piece->getTiles().size();
+
+    // strategy from:
+    // http://www.ultraboardgames.com/blokus/tips.php
+
+    // try to place bigger pieces first
+    heuristic += possibleMove.piece->getTiles().size() * 2;
+
+    // try to place pieces such that more open corners are available for the next turn
+    for (Coordinate cornerFormCoord : possibleMove.cornerForm) {
+        Coordinate cornerBoardPosition = possibleMove.position + cornerFormCoord;
+        if (cornerBoardPosition.getX() < board->getXTiles() && cornerBoardPosition.getX() >= 0 &&
+            cornerBoardPosition.getY() < board->getYTiles() && cornerBoardPosition.getY() >= 0) {
+            if (board->getPieceGrid()[cornerBoardPosition.getX()][cornerBoardPosition.getY()] == nullptr) {
+                bool cornerIsValidMove = true;
+                for (Coordinate edge : std::vector<Coordinate> {
+                        Coordinate(0, 1),
+                        Coordinate(0, -1),
+                        Coordinate(1, 0),
+                        Coordinate(-1, 0)
+                }) {
+                    Coordinate edgeOfCornerPosition = cornerBoardPosition + edge;
+                    if (edgeOfCornerPosition.getX() < board->getXTiles() && edgeOfCornerPosition.getX() >= 0 &&
+                        edgeOfCornerPosition.getY() < board->getYTiles() && edgeOfCornerPosition.getY() >= 0) {
+                        if (board->getPieceGrid()[edgeOfCornerPosition.getX()][edgeOfCornerPosition.getY()] != nullptr) {
+                            if (board->getPieceGrid()[edgeOfCornerPosition.getX()][edgeOfCornerPosition.getY()]->getPlayer() == possibleMove.piece->getPlayer()) {
+                                cornerIsValidMove = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (cornerIsValidMove) {
+                    heuristic += 1;
+                }
+            }
+        }
+    }
+
     return heuristic;
 }

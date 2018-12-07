@@ -76,7 +76,7 @@ std::vector<Player::PossibleMove> Player::getPossibleMoves() {
                         testPiece->rotateRight();
                     }
                     if (board->isValidMove(testPiece, position)) {
-                        possibleMoves.push_back(PossibleMove(piece, position, i));
+                        possibleMoves.push_back(PossibleMove(piece, position, i, testPiece->getCornerForm()));
                     }
                 }
             }
