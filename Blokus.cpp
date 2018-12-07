@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Board.h"
 #include "Computer.h"
-#include "Score.h"
 #include <iostream>
 using namespace std;
 
@@ -70,20 +69,6 @@ Blokus::Blokus(int width, int height): MainWindow("Blokus", width, height) {
 
     board = new Board(this, 350, 180);
     addDrawable(board);
-
-
-    Score* score1 = new Score(72, 230);
-    addDrawable(score1);
-
-    Score* score2 = new Score(352, 15);
-    addDrawable(score2);
-
-    Score* score3 = new Score(622, 230);
-    addDrawable(score3);
-
-    Score* score4 = new Score(352, 450);
-    addDrawable(score4);
-
 
     Player* player1 = new Player(this, Color(0.87, 0.30, 0.31), Coordinate(70, 240), board, Coordinate(0, 0));
     Player* player2 = new Player(this, Color(0.23, 0.24, 0.57), Coordinate(350, 25), board, Coordinate(19, 0));

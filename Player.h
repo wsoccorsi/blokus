@@ -4,6 +4,7 @@
 #include "Piece.h"
 #include "Tray.h"
 #include "Board.h"
+#include "Scoreboard.h"
 
 class Blokus;
 
@@ -46,9 +47,9 @@ protected:
     Color color;
     Board* board;
     Coordinate start;
-    int score = 0;
 
     Tray* tray;
+    Scoreboard* scoreboard;
 
 };
 

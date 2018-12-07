@@ -16,7 +16,8 @@ Player::Player(Blokus* blokus, Color color, Coordinate trayCoord, Board* board, 
     this->tray = new Tray(blokus, this, trayCoord.getX(), trayCoord.getY(), 20, 10);
     MainWindow::addDrawable(tray);
 
-
+    this->scoreboard = new Scoreboard(this->tray->getX(), this->tray->getY() - 10);
+    MainWindow::addDrawable(scoreboard);
 }
 
 /**
@@ -79,9 +80,9 @@ const Coordinate &Player::getStart() const {
 }
 
 int Player::getScore() const {
-    return score;
+    return this->scoreboard->getScore();
 }
 
-void Player::setScore(int s){
-    score = s;
+void Player::setScore(int score){
+    this->scoreboard->setScore(score);
 }
