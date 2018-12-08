@@ -63,6 +63,7 @@ void Computer::animatePieceMove(Piece* piece, Coordinate to) {
         } else if (pieceScreenPos.getY() > toScreenPos.getY()) {
             moveTowards.setY(-1);
         }
+        moveTowards = moveTowards + moveTowards; // make it faster
 
         Coordinate moveTo = pieceScreenPos + moveTowards;
 
