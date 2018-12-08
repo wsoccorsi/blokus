@@ -52,21 +52,20 @@ void Computer::animatePieceMove(Piece* piece, Coordinate to) {
             return MainWindow::POP;
         }
 
-        Coordinate difference = Coordinate(toScreenPos.getX() - pieceScreenPos.getX(), toScreenPos.getY() - pieceScreenPos.getY());
-        if (difference.getX() == 0) {
-            difference.setX(1);
+        Coordinate moveTowards = Coordinate();
+        if (pieceScreenPos.getX() < toScreenPos.getX()) {
+            moveTowards.setX(1);
+        } else if (pieceScreenPos.getX() > toScreenPos.getX()) {
+            moveTowards.setX(-1);
         }
-        if (difference.getY() == 0) {
-            difference.setY(1);
+        if (pieceScreenPos.getY() < toScreenPos.getY()) {
+            moveTowards.setY(1);
+        } else if (pieceScreenPos.getY() > toScreenPos.getY()) {
+            moveTowards.setY(-1);
         }
-        Coordinate offset = Coordinate(ceil(abs(difference.getX() / difference.getY())), ceil(abs(difference.getY() / difference.getX())));
-        if (difference.getX() < 0) {
-            offset.setX(offset.getX() * -1);
-        }
-        if (difference.getY() < 0) {
-            offset.setY(offset.getY() * -1);
-        }
-        Coordinate moveTo = Coordinate(offset.getX() + piece->getX(), offset.getY() + piece->getY());
+
+        Coordinate moveTo = pieceScreenPos + moveTowards;
+
         piece->moveTo(moveTo);
         MainWindow::render();
         MainWindow::update();
